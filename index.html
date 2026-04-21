@@ -26,6 +26,7 @@
         <ul>
             <li><a href="#home" class="nav-link active">Home</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
             <li><a href="#projects" class="nav-link">Projects</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -75,24 +76,153 @@
                             Teaching Fellow for Electronics and Instrumentation I.
                         </p>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="about-skills"
-                        style="background: rgba(255,51,51,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-                        <h3
-                            style="font-family: 'Outfit', sans-serif; color: var(--text-main); font-size: 1.3rem; margin-bottom: 0.8rem;">
-                            Technical Skills</h3>
-                        <p style="font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.5;">
-                            <strong>Engineering:</strong> SOLIDWORKS, Autodesk Inventor, Fusion 360, Ansys, AutoCAD<br>
-                            <strong>Software/ML:</strong> Python, C++, MATLAB, PyTorch, TensorFlow
-                        </p>
-                        <h3
-                            style="font-family: 'Outfit', sans-serif; color: var(--text-main); font-size: 1.3rem; margin-bottom: 0.8rem;">
-                            Certifications</h3>
-                        <p style="font-size: 0.95rem; margin-bottom: 0; line-height: 1.5;">
-                            <strong>NDT Level II:</strong> Liquid Penetrant Testing & Inspection (EN ISO
-                            9712/SNT-TC-1A).<br>
-                            <strong>Languages:</strong> Fluent in English & Macedonian.
-                        </p>
+        <!-- Skills Section -->
+        <section id="skills" class="section skills-section">
+            <div class="content-wrapper">
+                <h2>Skills & Expertise</h2>
+                <p>A comprehensive overview of my technical proficiencies and capabilities, ranging from mechanical design to software development.</p>
+
+                <div class="skills-tabs">
+                    <button class="tab-btn active" data-target="tab-engineering">Engineering</button>
+                    <button class="tab-btn" data-target="tab-software">Software/ML</button>
+                    <button class="tab-btn" data-target="tab-certifications">Certifications</button>
+                </div>
+
+                <div class="skills-content-area">
+                    <!-- Engineering -->
+                    <div class="skills-grid active" id="tab-engineering">
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i data-lucide="pen-tool"></i>
+                                <div class="skill-title">
+                                    <h3>SOLIDWORKS</h3>
+                                    <span class="skill-level advanced">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="skill-bar-container"><div class="skill-bar" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i data-lucide="box"></i>
+                                <div class="skill-title">
+                                    <h3>Autodesk Inventor</h3>
+                                    <span class="skill-level advanced">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="skill-bar-container"><div class="skill-bar" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i data-lucide="cpu"></i>
+                                <div class="skill-title">
+                                    <h3>Fusion 360</h3>
+                                    <span class="skill-level advanced">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="skill-bar-container"><div class="skill-bar" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i data-lucide="layers"></i>
+                                <div class="skill-title">
+                                    <h3>Ansys</h3>
+                                    <span class="skill-level intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="skill-bar-container"><div class="skill-bar" style="width: 70%;"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i data-lucide="drafting-compass"></i>
+                                <div class="skill-title">
+                                    <h3>AutoCAD</h3>
+                                    <span class="skill-level intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="skill-bar-container"><div class="skill-bar" style="width: 75%;"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Software -->
+                    <div class="skills-grid" id="tab-software">
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i data-lucide="terminal"></i>
+                                <div class="skill-title">
+                                    <h3>Python</h3>
+                                    <span class="skill-level advanced">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="skill-bar-container"><div class="skill-bar" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i data-lucide="code"></i>
+                                <div class="skill-title">
+                                    <h3>C++</h3>
+                                    <span class="skill-level intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="skill-bar-container"><div class="skill-bar" style="width: 65%;"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i data-lucide="function-square"></i>
+                                <div class="skill-title">
+                                    <h3>MATLAB</h3>
+                                    <span class="skill-level advanced">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="skill-bar-container"><div class="skill-bar" style="width: 80%;"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i data-lucide="network"></i>
+                                <div class="skill-title">
+                                    <h3>PyTorch</h3>
+                                    <span class="skill-level intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="skill-bar-container"><div class="skill-bar" style="width: 60%;"></div></div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i data-lucide="brain-circuit"></i>
+                                <div class="skill-title">
+                                    <h3>TensorFlow</h3>
+                                    <span class="skill-level beginner">Beginner</span>
+                                </div>
+                            </div>
+                            <div class="skill-bar-container"><div class="skill-bar" style="width: 40%;"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="skills-grid" id="tab-certifications">
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i data-lucide="badge-check"></i>
+                                <div class="skill-title">
+                                    <h3>NDT Level II</h3>
+                                    <span class="skill-level certified">Certified</span>
+                                </div>
+                            </div>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Liquid Penetrant Testing & Inspection (EN ISO 9712/SNT-TC-1A)</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <i data-lucide="languages"></i>
+                                <div class="skill-title">
+                                    <h3>Languages</h3>
+                                    <span class="skill-level advanced">Fluent</span>
+                                </div>
+                            </div>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">Fluent in English & Macedonian.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -106,6 +236,7 @@
 
                 <div class="project-grid">
                     <div class="project-item">
+                        <img src="images/TSG_IS_Logo.jpg" alt="TSG Industry Service Logo" style="width: 60px; height: auto; border-radius: 8px; margin-bottom: 15px;">
                         <h3>Engineering Intern</h3>
                         <p><strong>TSG Industry Service DOO</strong></p>
                         <p style="margin-top:10px; font-size:0.9rem;">Calculated pipeline corrosion rates for Trident

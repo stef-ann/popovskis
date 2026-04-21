@@ -172,4 +172,21 @@ document.addEventListener('DOMContentLoaded', () => {
         locText.textContent = `Geo unavailable`;
     }
 
+    // --- 6. Skills Tabs Logic ---
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const skillGrids = document.querySelectorAll('.skills-grid');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active classes
+            tabBtns.forEach(b => b.classList.remove('active'));
+            skillGrids.forEach(g => g.classList.remove('active'));
+
+            // Add active class to clicked
+            btn.classList.add('active');
+            const targetId = btn.getAttribute('data-target');
+            document.getElementById(targetId).classList.add('active');
+        });
+    });
+
 });
