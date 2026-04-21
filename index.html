@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <!-- Lucide Icons for robust premium icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
     <div id="particles-js"></div>
 
@@ -31,16 +33,26 @@
 
     <!-- Main Content Container with Scroll Snapping -->
     <main id="fullpage">
-        
+
         <!-- Home Section -->
         <section id="home" class="section home-section">
             <div class="content-wrapper">
                 <h1>Stefan <span>Popovski</span></h1>
                 <h2>Mechanical Engineering</h2>
                 <p>
-                    Discovering innovative, optimal, and highly efficient solutions to complex engineering challenges. Based in College Park, MD, originating from Skopje, Macedonia.
+                    Discovering innovative, optimal, and highly efficient solutions to complex engineering challenges.
+                    Based in College Park, MD, originating from Skopje, Macedonia.
                 </p>
                 <a href="#projects" class="cta-button">View My Work</a>
+
+                <!-- Time & Weather Premium Gadget -->
+                <div class="gadget-container" id="weather-gadget">
+                    <div class="gadget-time" id="gadget-time">--:--</div>
+                    <div class="gadget-weather" id="gadget-weather">
+                        <i data-lucide="map-pin" style="width:16px; height:16px;"></i>
+                        <span>Locating...</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -51,11 +63,35 @@
                 <div class="about-grid">
                     <div class="about-text">
                         <p>
-                            I am a passionate mechanical engineering undergraduate at the 
-                            <strong>University of Maryland, College Park</strong>. 
-                            My journey began in Skopje, Macedonia, instilling in me a drive for perfection and resilience. 
+                            I am a passionate <strong>Mechanical Engineering</strong> undergraduate at the
+                            <strong>University of Maryland, College Park</strong>, minoring in <strong>Nuclear
+                                Engineering</strong>
+                            (Cumulative GPA: 3.7/4.0). My journey began in Skopje, Macedonia, instilling in me a drive
+                            for perfection and resilience.
                             <br><br>
-                            To me, engineering is more than just math and physics; it is the fundamental process of iterating through critical problems to find the most robust solutions.
+                            To me, engineering is more than just math and physics; it is the fundamental process of
+                            iterating through critical problems to find the most robust solutions. I am a regular on the
+                            A. James Clark School of Engineering Dean's List and currently serve as an Undergraduate
+                            Teaching Fellow for Electronics and Instrumentation I.
+                        </p>
+                    </div>
+
+                    <div class="about-skills"
+                        style="background: rgba(255,51,51,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                        <h3
+                            style="font-family: 'Outfit', sans-serif; color: var(--text-main); font-size: 1.3rem; margin-bottom: 0.8rem;">
+                            Technical Skills</h3>
+                        <p style="font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.5;">
+                            <strong>Engineering:</strong> SOLIDWORKS, Autodesk Inventor, Fusion 360, Ansys, AutoCAD<br>
+                            <strong>Software/ML:</strong> Python, C++, MATLAB, PyTorch, TensorFlow
+                        </p>
+                        <h3
+                            style="font-family: 'Outfit', sans-serif; color: var(--text-main); font-size: 1.3rem; margin-bottom: 0.8rem;">
+                            Certifications</h3>
+                        <p style="font-size: 0.95rem; margin-bottom: 0; line-height: 1.5;">
+                            <strong>NDT Level II:</strong> Liquid Penetrant Testing & Inspection (EN ISO
+                            9712/SNT-TC-1A).<br>
+                            <strong>Languages:</strong> Fluent in English & Macedonian.
                         </p>
                     </div>
                 </div>
@@ -67,24 +103,39 @@
             <div class="content-wrapper">
                 <h2>Experience & Projects</h2>
                 <p>Highlighting core experiences, internships, and research endeavors that shape my career.</p>
-                
+
                 <div class="project-grid">
                     <div class="project-item">
-                        <h3>Interconnector Intern</h3>
-                        <p><strong>Macedonia - Greece</strong></p>
-                        <p style="margin-top:10px; font-size:0.9rem;">Assisted in overseeing the vast technical operations for the international energy interconnector, ensuring optimal project progression and engineering safety standards.</p>
+                        <h3>Engineering Intern</h3>
+                        <p><strong>TSG Industry Service DOO</strong></p>
+                        <p style="margin-top:10px; font-size:0.9rem;">Calculated pipeline corrosion rates for Trident
+                            Energy's FPSO rig. Assisted in developing the Macedonia-Greece 68km natural gas
+                            interconnector. Engineered a Python application utilizing optimization to significantly
+                            minimize pipe drop-off waste and project funding.</p>
                     </div>
-                    
+
                     <div class="project-item">
-                        <h3>FPSO Intern</h3>
-                        <p><strong>Trident Energy</strong></p>
-                        <p style="margin-top:10px; font-size:0.9rem;">Contributed to mechanical integrity assessments and workflow optimizations for Floating Production Storage and Offloading units.</p>
+                        <h3>CRR Research Assistant</h3>
+                        <p><strong>Center for Risk and Reliability</strong></p>
+                        <p style="margin-top:10px; font-size:0.9rem;">Implemented a stochastic Genetic Algorithm using
+                            PyTorch with Weibull distribution and Monte Carlo sampling to optimize maintenance and
+                            predict Mean Time Between Failures for nuclear reactors.</p>
                     </div>
-                    
+
                     <div class="project-item">
-                        <h3>Research Assistant</h3>
+                        <h3>Sensor Research Assistant</h3>
                         <p><strong>High Temperature Heat Flux Sensor</strong></p>
-                        <p style="margin-top:10px; font-size:0.9rem;">Undergraduate research heavily focused on thermodynamics and heat transfer methodologies, validating next-generation high-temperature sensors.</p>
+                        <p style="margin-top:10px; font-size:0.9rem;">Implemented thermoelectric & Seebeck effects for a
+                            high-temperature sensor at UMD’s IREAP lab. Won 1st Place & $25,000 grand prize (Radiance
+                            Technologies Innovation Bowl) for project excellence in product development.</p>
+                    </div>
+
+                    <div class="project-item">
+                        <h3>Team Project: Over-Terrain Vehicle</h3>
+                        <p><strong>Fire Suppression Robot</strong></p>
+                        <p style="margin-top:10px; font-size:0.9rem;">Designed and assembled an autonomous OTV utilizing
+                            a Vision System to navigate obstacles and extinguish flames. Extensive use of Fusion 360,
+                            Kinetics/Kinematics, and fabrication methodologies.</p>
                     </div>
                 </div>
             </div>
@@ -95,11 +146,12 @@
             <div class="content-wrapper contact-wrapper">
                 <h2>Let's Connect</h2>
                 <p>
-                    Currently open for new opportunities, collaborations, and rigorous engineering challenges. Let's build the future together.
+                    Currently open for new opportunities, collaborations, and rigorous engineering challenges. Let's
+                    build the future together.
                 </p>
                 <ul class="contact-list">
                     <li>
-                        <a href="mailto:stefan.popovski555@protonmail.com">
+                        <a href="mailto:popovskistefan12@gmail.com">
                             <i data-lucide="mail"></i> Email Me
                         </a>
                     </li>
@@ -127,22 +179,23 @@
 
         // Particles JS Custom Modern Config
         particlesJS('particles-js', {
-          "particles": {
-            "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": "#ff3333" },
-            "shape": { "type": "circle" },
-            "opacity": { "value": 0.3, "random": false },
-            "size": { "value": 3, "random": true },
-            "line_linked": { "enable": true, "distance": 150, "color": "#ff3333", "opacity": 0.2, "width": 1 },
-            "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "out_mode": "out" }
-          },
-          "interactivity": {
-            "detect_on": "canvas",
-            "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false }, "resize": true },
-            "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 0.6 } } }
-          },
-          "retina_detect": true
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ff3333" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#ff3333", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "out_mode": "out" }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false }, "resize": true },
+                "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 0.6 } } }
+            },
+            "retina_detect": true
         });
     </script>
 </body>
+
 </html>

@@ -370,6 +370,47 @@ p {
     box-shadow: 0 10px 20px rgba(255, 51, 51, 0.3);
 }
 
+/* Time & Weather Gadget */
+.gadget-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 10px 24px;
+    border-radius: 50px;
+    backdrop-filter: blur(8px);
+    margin-top: 2.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    /* Force to a new block effectively, but aligned with the content */
+    display: flex;
+    max-width: fit-content;
+}
+
+.gadget-container:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 51, 51, 0.3);
+}
+
+.gadget-time {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-main);
+    letter-spacing: 1px;
+}
+
+.gadget-weather, .gadget-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    border-left: 1px solid var(--glass-border);
+    padding-left: 1.5rem;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .navbar ul {
