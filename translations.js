@@ -1,0 +1,52 @@
+const translations = {
+    en: {
+        "nav-home": "Home",
+        "nav-about": "About",
+        "nav-skills": "Skills",
+        "nav-projects": "Projects",
+        "nav-contact": "Contact",
+        "hero-title": "Mechanical Engineering",
+        "hero-desc": "Discovering innovative, optimal, and highly efficient solutions to complex engineering challenges. Based in College Park, MD, originating from Skopje, Macedonia.",
+        "hero-btn": "View My Work",
+        "about-title": "About me",
+        "about-p1": "I am a passionate <strong>Mechanical Engineering</strong> undergraduate at the <strong>University of Maryland, College Park</strong>, minoring in <strong>Nuclear Engineering</strong> (Cumulative GPA: 3.7/4.0). My journey began in Skopje, Macedonia, instilling in me a drive for perfection and resilience.",
+        "about-p2": "To me, engineering is more than just math and physics; it is the fundamental process of iterating through critical problems to find the most robust solutions. I am a regular on the A. James Clark School of Engineering Dean's List and currently serve as an Undergraduate Teaching Fellow for Electronics and Instrumentation I.",
+        "skills-title": "Skills & Expertise",
+        "skills-desc": "A comprehensive overview of my technical proficiencies and capabilities, ranging from mechanical design to software development.",
+        "tab-engineering": "Engineering",
+        "tab-software": "Software/ML",
+        "tab-cert": "Certifications",
+        "projects-title": "Experience & Projects",
+        "projects-desc": "Highlighting core experiences, internships, and research endeavors that shape my career.",
+        "tab-exp": "Experience",
+        "tab-proj": "Projects",
+        "contact-title": "Let's Connect",
+        "contact-desc": "Always open for new learning opportunities, collaborations, experiences and collaboration with like-minded people. Feel free to reach out."
+    },
+    mk: {
+        "nav-home": "Почетна",
+        "nav-about": "За мене",
+        "nav-skills": "Вештини",
+        "nav-projects": "Проекти",
+        "nav-contact": "Контакт",
+        "hero-title": "Машинско Инженерство",
+        "hero-desc": "Откривање на иновативни, оптимални и високо ефикасни решенија за комплексни инженерски предизвици. Базиран во College Park, MD, со потекло од Скопје, Македонија.",
+        "hero-btn": "Мојата Работа",
+        "about-title": "За мене",
+        "about-p1": "Јас сум страствен студент по <strong>Машинско инженерство</strong> на <strong>Универзитетот во Мериленд, Колеџ Парк</strong>, со minor по <strong>Нуклеарно инженерство</strong> (Просек: 3.7/4.0). Моето патување започна во Скопје, Македонија, всадувајќи во мене стремеж кон совршенство и издржливост.",
+        "about-p2": "За мене, инженерството е повеќе од само математика и физика; тоа е фундаментален процес на итерација низ критични проблеми за да се најдат најробустните решенија. Редовен сум на Деканската листа на Инженерската школа А. Џејмс Кларк и моментално служам како додипломец соработник во наставата за Електроника и Инструментација I.",
+        "skills-title": "Вештини и Експертиза",
+        "skills-desc": "Сеопфатен преглед на моите технички способности и познавања, од машински дизајн до развој на софтвер.",
+        "tab-engineering": "Инженерство",
+        "tab-software": "Софтвер/Машинско Учење",
+        "tab-cert": "Сертификати",
+        "projects-title": "Искуство и Проекти",
+        "projects-desc": "Истакнување на клучните искуства, пракси и истражувачки потфати кои ја обликуваат мојата кариера.",
+        "tab-exp": "Искуство",
+        "tab-proj": "Проекти",
+        "contact-title": "Контакт",
+        "contact-desc": "Секогаш отворен за нови можности за учење, соработки, искуства и поврзување со истомисленици. Слободно контактирајте ме."
+    }
+};
+
+window.translations = translations;

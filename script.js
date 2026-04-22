@@ -230,4 +230,111 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 8. Modal Logic ---
+    const modal = document.getElementById('project-modal');
+    const modalBody = document.getElementById('modal-body');
+    const closeBtn = document.querySelector('.close-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    if (modal && projectItems) {
+        projectItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const contentClone = item.cloneNode(true);
+                
+                modalBody.innerHTML = '';
+                
+                // Re-build layout for modal
+                const img = contentClone.querySelector('img');
+                const h3 = contentClone.querySelector('h3');
+                const strong = contentClone.querySelector('strong'); // usually the subtitle
+                const ps = contentClone.querySelectorAll('p'); // The rest of the descriptions
+                
+                if (img) {
+                    const newImg = img.cloneNode();
+                    newImg.style.width = '100%';
+                    newImg.style.maxHeight = '300px';
+                    newImg.style.objectFit = 'contain';
+                    modalBody.appendChild(newImg);
+                }
+                if (h3) modalBody.appendChild(h3.cloneNode(true));
+                if (strong) {
+                    const subtitle = document.createElement('div');
+                    subtitle.className = 'modal-subtitle';
+                    subtitle.textContent = strong.textContent;
+                    modalBody.appendChild(subtitle);
+                }
+                
+                // Append all paragraphs that aren't the strong one
+                ps.forEach(p => {
+                    if (!p.querySelector('strong')) {
+                        modalBody.appendChild(p.cloneNode(true));
+                    }
+                });
+                
+                // Add placeholder for extra details
+                const extraDetails = document.createElement('p');
+                extraDetails.style.marginTop = "20px";
+                extraDetails.style.borderTop = "1px solid rgba(255,255,255,0.1)";
+                extraDetails.style.paddingTop = "20px";
+                extraDetails.innerHTML = "<em>More detailed project analysis, diagrams, and photos will be displayed here upon expansion.</em>";
+                modalBody.appendChild(extraDetails);
+
+                // Show modal
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Close logic
+        const closeModal = () => {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+            setTimeout(() => { modalBody.innerHTML = ''; }, 300); // Clear content after transition
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+    }
+
+    // --- 9. Language Localization ---
+    const langBtns = document.querySelectorAll('.lang-btn');
+    
+    function setLanguage(lang) {
+        if (!window.translations || !window.translations[lang]) return;
+        
+        // Update active class on buttons
+        langBtns.forEach(btn => {
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Update all elements with data-i18n attribute
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (window.translations[lang][key]) {
+                el.innerHTML = window.translations[lang][key];
+            }
+        });
+    }
+
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetLang = btn.getAttribute('data-lang');
+            setLanguage(targetLang);
+        });
+    });
+
 });

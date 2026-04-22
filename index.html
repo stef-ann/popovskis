@@ -24,12 +24,16 @@
     <!-- Sticky Glassmorphism Nav -->
     <nav class="navbar" id="navbar">
         <ul id="nav-links">
-            <li><a href="#home" class="nav-link active">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="#home" class="nav-link active" data-i18n="nav-home">Home</a></li>
+            <li><a href="#about" class="nav-link" data-i18n="nav-about">About</a></li>
+            <li><a href="#skills" class="nav-link" data-i18n="nav-skills">Skills</a></li>
+            <li><a href="#projects" class="nav-link" data-i18n="nav-projects">Projects</a></li>
+            <li><a href="#contact" class="nav-link" data-i18n="nav-contact">Contact</a></li>
         </ul>
+        <div class="lang-toggle">
+            <span class="lang-btn active" data-lang="en"><img src="assets/uk.png" alt="English"></span>
+            <span class="lang-btn" data-lang="mk"><img src="assets/mk.png" alt="Macedonian"></span>
+        </div>
         <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
             <i data-lucide="menu" id="mobile-menu-icon"></i>
         </button>
@@ -42,12 +46,12 @@
         <section id="home" class="section home-section">
             <div class="content-wrapper">
                 <h1>Stefan <span>Popovski</span></h1>
-                <h2>Mechanical Engineering</h2>
-                <p>
+                <h2 data-i18n="hero-title">Mechanical Engineering</h2>
+                <p data-i18n="hero-desc">
                     Discovering innovative, optimal, and highly efficient solutions to complex engineering challenges.
                     Based in College Park, MD, originating from Skopje, Macedonia.
                 </p>
-                <a href="#projects" class="cta-button">View My Work</a>
+                <a href="#projects" class="cta-button" data-i18n="hero-btn">View My Work</a>
 
                 <!-- Time & Weather Premium Gadget -->
                 <div class="gadget-container" id="weather-gadget">
@@ -63,16 +67,18 @@
         <!-- About Section -->
         <section id="about" class="section about-section">
             <div class="content-wrapper">
-                <h2>About me</h2>
+                <h2 data-i18n="about-title">About me</h2>
                 <div class="about-grid">
                     <div class="about-text">
-                        <p>
+                        <p data-i18n="about-p1">
                             I am a passionate <strong>Mechanical Engineering</strong> undergraduate at the
                             <strong>University of Maryland, College Park</strong>, minoring in <strong>Nuclear
                                 Engineering</strong>
                             (Cumulative GPA: 3.7/4.0). My journey began in Skopje, Macedonia, instilling in me a drive
                             for perfection and resilience.
-                            <br><br>
+                        </p>
+                        <br>
+                        <p data-i18n="about-p2">
                             To me, engineering is more than just math and physics; it is the fundamental process of
                             iterating through critical problems to find the most robust solutions. I am a regular on the
                             A. James Clark School of Engineering Dean's List and currently serve as an Undergraduate
@@ -86,19 +92,34 @@
         <!-- Skills Section -->
         <section id="skills" class="section skills-section">
             <div class="content-wrapper">
-                <h2>Skills & Expertise</h2>
-                <p>A comprehensive overview of my technical proficiencies and capabilities, ranging from mechanical
+                <h2 data-i18n="skills-title">Skills & Expertise</h2>
+                <p data-i18n="skills-desc">A comprehensive overview of my technical proficiencies and capabilities,
+                    ranging from mechanical
                     design to software development.</p>
 
                 <div class="skills-tabs">
-                    <button class="tab-btn active" data-target="tab-engineering">Engineering</button>
-                    <button class="tab-btn" data-target="tab-software">Software/ML</button>
-                    <button class="tab-btn" data-target="tab-certifications">Certifications</button>
+                    <button class="tab-btn active" data-target="tab-engineering"
+                        data-i18n="tab-engineering">Engineering</button>
+                    <button class="tab-btn" data-target="tab-software" data-i18n="tab-software">Software/ML</button>
+                    <button class="tab-btn" data-target="tab-certifications"
+                        data-i18n="tab-cert">Certifications</button>
                 </div>
 
                 <div class="skills-content-area">
                     <!-- Engineering -->
                     <div class="skills-grid active" id="tab-engineering">
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <img src="assets/arduino.png" alt="Arduino" class="skill-icon">
+                                <div class="skill-title">
+                                    <h3>Arduino</h3>
+                                    <span class="skill-level intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar" style="width: 40%;"></div>
+                            </div>
+                        </div>
                         <div class="skill-card">
                             <div class="skill-header">
                                 <img src="assets/solidworks.png" alt="SOLIDWORKS" class="skill-icon">
@@ -201,10 +222,10 @@
                         </div>
                         <div class="skill-card">
                             <div class="skill-header">
-                                <i data-lucide="network"></i>
+                                <img src="assets/R.png" alt="R" class="skill-icon">
                                 <div class="skill-title">
-                                    <h3>PyTorch</h3>
-                                    <span class="skill-level intermediate">Intermediate</span>
+                                    <h3>R</h3>
+                                    <span class="skill-level beginner">Beginner</span>
                                 </div>
                             </div>
                             <div class="skill-bar-container">
@@ -213,10 +234,22 @@
                         </div>
                         <div class="skill-card">
                             <div class="skill-header">
-                                <i data-lucide="brain-circuit"></i>
+                                <img src="assets/pytorch.png" alt="PyTorch" class="skill-icon">
                                 <div class="skill-title">
-                                    <h3>TensorFlow</h3>
+                                    <h3>PyTorch</h3>
                                     <span class="skill-level beginner">Beginner</span>
+                                </div>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-header">
+                                <img src="assets/Processing.ico" alt="Processing" class="skill-icon">
+                                <div class="skill-title">
+                                    <h3>Processing</h3>
+                                    <span class="skill-level intermediate">Intermediate</span>
                                 </div>
                             </div>
                             <div class="skill-bar-container">
@@ -229,7 +262,7 @@
                     <div class="skills-grid" id="tab-certifications">
                         <div class="skill-card">
                             <div class="skill-header">
-                                <i data-lucide="badge-check"></i>
+                                <img src="assets/sectorcert.png" alt="NDT Level II" class="skill-icon">
                                 <div class="skill-title">
                                     <h3>NDT Level II</h3>
                                     <span class="skill-level certified">Certified</span>
@@ -256,12 +289,13 @@
         <!-- Projects Section -->
         <section id="projects" class="section projects-section">
             <div class="content-wrapper">
-                <h2>Experience & Projects</h2>
-                <p>Highlighting core experiences, internships, and research endeavors that shape my career.</p>
+                <h2 data-i18n="projects-title">Experience & Projects</h2>
+                <p data-i18n="projects-desc">Highlighting core experiences, internships, and research endeavors that
+                    shape my career.</p>
 
                 <div class="skills-tabs">
-                    <button class="tab-btn active" data-target="tab-experience">Experience</button>
-                    <button class="tab-btn" data-target="tab-projects-list">Projects</button>
+                    <button class="tab-btn active" data-target="tab-experience" data-i18n="tab-exp">Experience</button>
+                    <button class="tab-btn" data-target="tab-projects-list" data-i18n="tab-proj">Projects</button>
                 </div>
 
                 <div class="projects-content-area">
@@ -271,36 +305,67 @@
                                 style="width: 60px; height: auto; border-radius: 8px; margin-bottom: 15px;">
                             <h3>Engineering Intern</h3>
                             <p><strong>TSG Industry Service DOO</strong></p>
-                            <p style="margin-top:10px; font-size:0.9rem;">Calculated pipeline corrosion rates for Trident
+                            <p style="margin-top:10px; font-size:0.9rem;">Calculated pipeline corrosion rates for
+                                Trident
                                 Energy's FPSO rig. Assisted in developing the Macedonia-Greece 68km natural gas
                                 interconnector. Engineered a Python application utilizing optimization to significantly
                                 minimize pipe drop-off waste and project funding.</p>
                         </div>
 
                         <div class="project-item">
+                            <img src="assets/deptmeche.jfif" alt="A. James Clark School of Engineering Logo"
+                                style="width: 200px; height: auto; border-radius: 8px; margin-bottom: 15px;">
                             <h3>Dr. Zhao Lab: Center for Risk and Reliability</h3>
                             <p><strong>Undergraduate Research Assistant</strong></p>
-                            <p style="margin-top:10px; font-size:0.9rem;">Implemented a stochastic Genetic Algorithm using
+                            <p style="margin-top:10px; font-size:0.9rem;">Implemented a stochastic Genetic Algorithm
+                                using
                                 PyTorch with Weibull distribution and Monte Carlo sampling to optimize maintenance and
                                 predict Mean Time Between Failures for nuclear reactors.</p>
+                        </div>
+                        <div class="project-item">
+                            <img src="assets/deptmeche.jfif" alt="A. James Clark School of Engineering Logo"
+                                style="width: 200px; height: auto; border-radius: 8px; margin-bottom: 15px;">
+                            <h3>Innovation Bowl: High Temperature Heat Flux Sensor </h3>
+                            <p><strong>Undergraduate Researcher</strong></p>
+                            <p style="margin-top:10px; font-size:0.9rem;">Implemented thermoelectric & Seebeck effects
+                                for a
+                                high-temperature sensor at UMD’s IREAP lab. Won 1st Place & $25,000 grand prize
+                                (Radiance
+                                Technologies Innovation Bowl) for project excellence in product development.</p>
                         </div>
                     </div>
 
                     <div class="project-grid" id="tab-projects-list">
                         <div class="project-item">
-                            <h3>Innovation Bowl: High Temperature Heat Flux Sensor </h3>
-                            <p><strong>Undergraduate Researcher</strong></p>
-                            <p style="margin-top:10px; font-size:0.9rem;">Implemented thermoelectric & Seebeck effects for a
-                                high-temperature sensor at UMD’s IREAP lab. Won 1st Place & $25,000 grand prize (Radiance
-                                Technologies Innovation Bowl) for project excellence in product development.</p>
-                        </div>
-
-                        <div class="project-item">
                             <h3>Team Project: Over-Terrain Vehicle</h3>
                             <p><strong>Fire Suppression Robot</strong></p>
-                            <p style="margin-top:10px; font-size:0.9rem;">Designed and assembled an autonomous OTV utilizing
-                                a Vision System to navigate obstacles and extinguish flames. Extensive use of Fusion 360,
+                            <p style="margin-top:10px; font-size:0.9rem;">Designed and assembled an autonomous OTV
+                                utilizing
+                                a Vision System to navigate obstacles and extinguish flames. Extensive use of Fusion
+                                360,
                                 Kinetics/Kinematics, and fabrication methodologies.</p>
+                        </div>
+                        <div class="project-item">
+                            <h3>Autonomous Solar Panel Tracking System</h3>
+                            <p><strong>Arduino & 3D Printing Project</strong></p>
+                            <p style="margin-top:10px; font-size:0.9rem;">Currently in progress... Stay tuned for
+                                updates.</p>
+                        </div>
+                        <div class="project-item">
+                            <h3>FEA Study on Pedestrian Overpass "Vlajko"</h3>
+                            <p><strong>Ansys Mechanical & Static Structural</strong></p>
+                            <p style="margin-top:10px; font-size:0.9rem;">Currently in progress... Stay tuned for
+                                updates.</p>
+                        </div>
+                        <div class="project-item">
+                            <h3>Personal Portfolio Website</h3>
+                            <p><strong>HTML, CSS, JavaScript, Particle.js, Git</strong></p>
+                            <p style="margin-top:10px; font-size:0.9rem;">Designed a responsive, modern personal
+                                portfolio website from scratch. Implemented a dynamic particle animation
+                                background using Particle.js, smooth scrolling with GSAP, and a
+                                comprehensive localization system supporting English and Macedonian.
+                                Managed the project using Git and GitHub for version control.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -310,10 +375,11 @@
         <!-- Contact Section -->
         <section id="contact" class="section contact-section">
             <div class="content-wrapper contact-wrapper">
-                <h2>Let's Connect</h2>
-                <p>
-                    Currently open for new opportunities, collaborations, and rigorous engineering challenges. Let's
-                    build the future together.
+                <h2 data-i18n="contact-title">Let's Connect</h2>
+                <p data-i18n="contact-desc">
+                    Always open for new learning opportunities, collaborations, experiences and collaboration with
+                    like-minded
+                    people. Feel free to reach out.
                 </p>
                 <ul class="contact-list">
                     <li>
@@ -337,7 +403,18 @@
 
     </main>
 
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn"><i data-lucide="x"></i></span>
+            <div class="modal-body" id="modal-body">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
     <!-- Application Script -->
+    <script src="translations.js"></script>
     <script src="script.js"></script>
     <script>
         // Init Lucide Icons
@@ -346,12 +423,12 @@
         // Particles JS Custom Modern Config
         particlesJS('particles-js', {
             "particles": {
-                "number": { "value": 25, "density": { "enable": true, "value_area": 800 } },
+                "number": { "value": 30, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#ff3333" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.15, "random": false },
-                "size": { "value": 2, "random": true },
-                "line_linked": { "enable": true, "distance": 150, "color": "#ff3333", "opacity": 0.1, "width": 1 },
+                "opacity": { "value": 0.4, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#ff3333", "opacity": 0.3, "width": 1.5 },
                 "move": { "enable": true, "speed": 1.0, "direction": "none", "random": true, "out_mode": "out" }
             },
             "interactivity": {
