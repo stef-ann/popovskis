@@ -172,20 +172,33 @@ document.addEventListener('DOMContentLoaded', () => {
         locText.textContent = `Geo unavailable`;
     }
 
-    // --- 6. Skills Tabs Logic ---
+    // --- 6. Generic Tabs Logic ---
     const tabBtns = document.querySelectorAll('.tab-btn');
-    const skillGrids = document.querySelectorAll('.skills-grid');
 
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active classes
-            tabBtns.forEach(b => b.classList.remove('active'));
-            skillGrids.forEach(g => g.classList.remove('active'));
+            // Find the closest tab group
+            const tabsContainer = btn.closest('.skills-tabs');
+            
+            // Remove active from all buttons in this specific tab container
+            if (tabsContainer) {
+                tabsContainer.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            }
 
-            // Add active class to clicked
-            btn.classList.add('active');
+            // Get target content area
             const targetId = btn.getAttribute('data-target');
-            document.getElementById(targetId).classList.add('active');
+            const targetContent = document.getElementById(targetId);
+            
+            if (targetContent) {
+                const contentArea = targetContent.parentElement;
+                
+                // Remove active from all grids in the matching content area
+                Array.from(contentArea.children).forEach(child => child.classList.remove('active'));
+
+                // Add active class to clicked button and target content
+                btn.classList.add('active');
+                targetContent.classList.add('active');
+            }
         });
     });
 

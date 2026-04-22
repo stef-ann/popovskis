@@ -413,11 +413,21 @@ p {
 }
 
 /* Projects Section */
+.projects-content-area {
+    position: relative;
+    min-height: 300px;
+}
+
 .project-grid {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2.5rem;
+    animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+.project-grid.active {
+    display: grid;
 }
 
 .project-item {
