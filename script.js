@@ -189,4 +189,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- 7. Mobile Menu Logic ---
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navLinksList = document.getElementById('nav-links');
+    const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+
+    if (mobileMenuBtn && navLinksList) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinksList.classList.toggle('active');
+            
+            // Toggle icon between menu and x
+            if (navLinksList.classList.contains('active')) {
+                mobileMenuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons(); // Re-render the icon
+        });
+
+        // Close menu when a link is clicked
+        navLinksList.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksList.classList.remove('active');
+                mobileMenuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+    }
+
 });

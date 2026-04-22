@@ -345,7 +345,8 @@ p {
     margin-bottom: 1.2rem;
 }
 
-.skill-header i {
+.skill-header i,
+.skill-header .skill-icon {
     width: 32px;
     height: 32px;
     color: var(--accent-red);
@@ -353,6 +354,7 @@ p {
     padding: 8px;
     border-radius: 8px;
     margin-right: 15px;
+    object-fit: contain;
 }
 
 .skill-title {
@@ -555,24 +557,79 @@ p {
     padding-left: 1.5rem;
 }
 
+/* Mobile Menu Button - Hidden by default */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001; /* Keep above the slide-in menu */
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .navbar ul {
-        gap: 1.5rem;
+    /* Mobile slide-in menu */
+    .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        right: 1.5rem;
     }
     
-    .navbar a {
-        font-size: 0.85rem;
+    .navbar {
+        justify-content: flex-start;
+        padding-left: 1.5rem;
+    }
+    
+    .navbar ul {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Hidden by default */
+        width: 250px;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        transition: right 0.4s ease;
+        border-left: 1px solid var(--glass-border);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .navbar ul.active {
+        right: 0;
     }
 
+    .navbar a {
+        font-size: 1.25rem;
+    }
+
+    /* Hide gear on mobile as requested */
     .gear-container {
-        width: 200px;
-        height: 200px;
-        left: -100px;
+        display: none;
+    }
+    
+    /* Optimize spacing */
+    .section {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
     
     .about-grid, .contact-wrapper, .project-item {
-        padding: 2rem;
+        padding: 1.5rem;
+    }
+    
+    /* Grid optimization */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-grid {
+        grid-template-columns: 1fr;
     }
     
     .skills-tabs {
