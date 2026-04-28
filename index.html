@@ -16,10 +16,14 @@
 <body>
     <div id="particles-js"></div>
 
-    <!-- Pinned Left Gear Motif -->
-    <div class="gear-container">
+    <!-- Pinned Left Gear Motif — Click to Toggle Mode -->
+    <div class="gear-container" id="gear-toggle" role="button" aria-label="Toggle between Professional and Hobby mode"
+        tabindex="0">
         <img id="gear" src="images/gear_transparent.png" alt="Rotating Gear Element">
     </div>
+
+    <!-- Mode Transition Flash Overlay -->
+    <div class="mode-transition-overlay" id="mode-overlay"></div>
 
     <!-- Sticky Glassmorphism Nav -->
     <nav class="navbar" id="navbar">
@@ -28,6 +32,7 @@
             <li><a href="#about" class="nav-link" data-i18n="nav-about">About</a></li>
             <li><a href="#skills" class="nav-link" data-i18n="nav-skills">Skills</a></li>
             <li><a href="#projects" class="nav-link" data-i18n="nav-projects">Projects</a></li>
+            <li class="gallery-nav-item"><a href="#gallery" class="nav-link" data-i18n="nav-gallery">Gallery</a></li>
             <li><a href="#contact" class="nav-link" data-i18n="nav-contact">Contact</a></li>
         </ul>
         <div class="lang-toggle">
@@ -46,12 +51,28 @@
         <section id="home" class="section home-section">
             <div class="content-wrapper">
                 <h1>Stefan <span>Popovski</span></h1>
-                <h2 data-i18n="hero-title">Mechanical Engineering</h2>
-                <p data-i18n="hero-desc">
-                    Discovering innovative, optimal, and highly efficient solutions to complex engineering challenges.
-                    Based in College Park, MD, originating from Skopje, Macedonia.
-                </p>
-                <a href="#projects" class="cta-button" data-i18n="hero-btn">View My Work</a>
+
+                <!-- Professional Home -->
+                <div class="pro-content">
+                    <h2 data-i18n="hero-title">Mechanical Engineering</h2>
+                    <p data-i18n="hero-desc">
+                        Discovering innovative, optimal, and highly efficient solutions to complex engineering
+                        challenges.
+                        Based in College Park, MD, originating from Skopje, Macedonia.
+                    </p>
+                    <a href="#projects" class="cta-button" data-i18n="hero-btn">View My Work</a>
+                </div>
+
+                <!-- Hobby Home -->
+                <div class="hobby-content">
+                    <h2 data-i18n="hobby-hero-title">Beyond Engineering</h2>
+                    <p data-i18n="hobby-hero-desc">
+                        When I'm not solving engineering problems, I explore the world, capturing moments through my
+                        camera or phone,
+                        carving down ski slopes (in the winter only lol), exercising, or hiking new trails.
+                    </p>
+                    <a href="#about" class="cta-button" data-i18n="hobby-hero-btn">Explore My World</a>
+                </div>
 
                 <!-- Time & Weather Premium Gadget -->
                 <div class="gadget-container" id="weather-gadget">
@@ -67,23 +88,83 @@
         <!-- About Section -->
         <section id="about" class="section about-section">
             <div class="content-wrapper">
-                <h2 data-i18n="about-title">About me</h2>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p data-i18n="about-p1">
-                            I am a passionate <strong>Mechanical Engineering</strong> undergraduate at the
-                            <strong>University of Maryland, College Park</strong>, minoring in <strong>Nuclear
-                                Engineering</strong>
-                            (Cumulative GPA: 3.7/4.0). My journey began in Skopje, Macedonia, instilling in me a drive
-                            for perfection and resilience.
-                        </p>
-                        <br>
-                        <p data-i18n="about-p2">
-                            To me, engineering is more than just math and physics; it is the fundamental process of
-                            iterating through critical problems to find the most robust solutions. I am a regular on the
-                            A. James Clark School of Engineering Dean's List and currently serve as an Undergraduate
-                            Teaching Fellow for Electronics and Instrumentation I.
-                        </p>
+                <!-- Professional About -->
+                <div class="pro-content">
+                    <h2 data-i18n="about-title">About me</h2>
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <p data-i18n="about-p1">
+                                I am a prospective <strong>Mechanical Engineering</strong> undergraduate at the
+                                <strong>University of Maryland, College Park</strong>, minoring in <strong>Nuclear
+                                    Engineering</strong>
+                                (Expected GPA: 4.0). My journey began in Skopje, Macedonia, instilling in me a drive
+                                for perfection and resilience.
+                            </p>
+                            <br>
+                            <p data-i18n="about-p2">
+                                To me, engineering is more than just math and physics; it is the fundamental process of
+                                iterating through critical problems to find the most robust solutions. Through my
+                                academic journey and various projects, I've developed a strong foundation in and
+                                interest in Reliability and Systems Safety, encompassing mathematical modelling and
+                                statstical optimization.
+                                This led me to my interest in the field of Probabilistic Risk Assessment, and
+                                Fitness-for-Service assessments (FFS), blending the field of preditcive computing and
+                                physical engineering.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hobby About -->
+                <div class="hobby-content">
+                    <h2 data-i18n="hobby-about-title">Life Outside Academics</h2>
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <p data-i18n="hobby-about-p1">
+                                Outside the engineering world, I find joy and fulfillment in
+                                <strong>photography</strong> — capturing
+                                landscapes, street scenes, and candid moments wherever I travel. I definetely am by no
+                                means professional, but it is a nice creative outlet from the academic rigor.
+                            </p>
+                            <br>
+                            <p data-i18n="hobby-about-p2">
+                                I'm an avid <strong>skier</strong> who lives for the adrenaline of fresh powder days,
+                                a dedicated <strong>runner</strong> always chasing new personal records, and a
+                                passionate
+                                <strong>traveler</strong> with an insatiable curiosity for new cultures, cuisines, and
+                                landscapes.
+                                These pursuits keep me balanced, energized, and inspired.
+                            </p>
+                            <br>
+                            <p data-i18n="hobby-about-p3">
+                                Growing up I was always surronded by music, and practiced piano for a solid 8 years,
+                                which I later threw out the windows to
+                                self-teach myself guitar. I still actively play and enjoy it. However, this all stemmed
+                                from my love for listening to music and appreciating the artistry behind it.
+                                I try to listen to a wide variety of genres, and explore how music evolves through time
+                                and culture, while always enjoying the roots of what made the music what it is for me.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="hobby-stats">
+                        <div class="hobby-stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Countries Visited</span>
+                        </div>
+                        <div class="hobby-stat">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Ski Resorts</span>
+                        </div>
+                        <div class="hobby-stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Miles Run</span>
+                        </div>
+                        <div class="hobby-stat">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">Photos Taken</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,194 +173,237 @@
         <!-- Skills Section -->
         <section id="skills" class="section skills-section">
             <div class="content-wrapper">
-                <h2 data-i18n="skills-title">Skills & Expertise</h2>
-                <p data-i18n="skills-desc">A comprehensive overview of my technical proficiencies and capabilities,
-                    ranging from mechanical
-                    design to software development.</p>
-
-                <div class="skills-tabs">
-                    <button class="tab-btn active" data-target="tab-engineering"
-                        data-i18n="tab-engineering">Engineering</button>
-                    <button class="tab-btn" data-target="tab-software" data-i18n="tab-software">Software/ML</button>
-                    <button class="tab-btn" data-target="tab-certifications"
-                        data-i18n="tab-cert">Certifications</button>
+                <!-- Professional Skills Header -->
+                <div class="pro-content">
+                    <h2 data-i18n="skills-title">Skills & Expertise</h2>
+                    <p data-i18n="skills-desc">A comprehensive overview of my technical proficiencies and capabilities,
+                        ranging from mechanical
+                        design to software development.</p>
                 </div>
 
-                <div class="skills-content-area">
-                    <!-- Engineering -->
-                    <div class="skills-grid active" id="tab-engineering">
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <img src="assets/arduino.png" alt="Arduino" class="skill-icon">
-                                <div class="skill-title">
-                                    <h3>Arduino</h3>
-                                    <span class="skill-level intermediate">Intermediate</span>
-                                </div>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 40%;"></div>
-                            </div>
+                <!-- Hobby Skills Header -->
+                <div class="hobby-content">
+                    <h2 data-i18n="hobby-skills-title">Passions & Pursuits</h2>
+                    <p data-i18n="hobby-skills-desc">The activities that fuel my creativity, keep me grounded, and make
+                        life an adventure.</p>
+
+                    <div class="hobby-grid">
+                        <div class="hobby-card">
+                            <span class="hobby-icon">📸</span>
+                            <h3>Photography</h3>
+                            <p>From sweeping landscapes to intimate street scenes, I use photography to document the
+                                world around me. I shoot with a focus on natural light, composition, and storytelling.
+                            </p>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <img src="assets/solidworks.png" alt="SOLIDWORKS" class="skill-icon">
-                                <div class="skill-title">
-                                    <h3>SOLIDWORKS</h3>
-                                    <span class="skill-level advanced">Advanced</span>
-                                </div>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 90%;"></div>
-                            </div>
+                        <div class="hobby-card">
+                            <span class="hobby-icon">⛷️</span>
+                            <h3>Skiing</h3>
+                            <p>Whether it's groomed runs or backcountry powder, skiing is my ultimate winter escape.
+                                There's nothing like the rush of carving through fresh snow with mountains on every
+                                horizon.</p>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <img src="assets/inventor.png" alt="Autodesk Inventor" class="skill-icon">
-                                <div class="skill-title">
-                                    <h3>Autodesk Inventor</h3>
-                                    <span class="skill-level advanced">Advanced</span>
-                                </div>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 85%;"></div>
-                            </div>
+                        <div class="hobby-card">
+                            <span class="hobby-icon">✈️</span>
+                            <h3>Travel</h3>
+                            <p>Exploring new cultures, tasting local cuisines, and immersing myself in unfamiliar places
+                                is how I broaden my perspective. Every trip is a chance to see the world differently.
+                            </p>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <i data-lucide="cpu"></i>
-                                <div class="skill-title">
-                                    <h3>Fusion 360</h3>
-                                    <span class="skill-level advanced">Advanced</span>
-                                </div>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <img src="assets/ansys.png" alt="Ansys" class="skill-icon">
-                                <div class="skill-title">
-                                    <h3>Ansys</h3>
-                                    <span class="skill-level intermediate">Intermediate</span>
-                                </div>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 70%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <img src="assets/autocad.png" alt="AutoCAD" class="skill-icon">
-                                <div class="skill-title">
-                                    <h3>AutoCAD</h3>
-                                    <span class="skill-level intermediate">Intermediate</span>
-                                </div>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 75%;"></div>
-                            </div>
+                        <div class="hobby-card">
+                            <span class="hobby-icon">🏃</span>
+                            <h3>Running</h3>
+                            <p>Running clears my mind and tests my limits. From early morning jogs to longer distance
+                                training, it's my daily ritual for staying sharp — physically and mentally.</p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Software -->
-                    <div class="skills-grid" id="tab-software">
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <img src="assets/python.png" alt="Python" class="skill-icon">
-                                <div class="skill-title">
-                                    <h3>Python</h3>
-                                    <span class="skill-level advanced">Advanced</span>
-                                </div>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <img src="assets/c.png" alt="C++" class="skill-icon">
-                                <div class="skill-title">
-                                    <h3>C++</h3>
-                                    <span class="skill-level intermediate">Intermediate</span>
-                                </div>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 65%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <img src="assets/matlab.png" alt="MATLAB" class="skill-icon">
-                                <div class="skill-title">
-                                    <h3>MATLAB</h3>
-                                    <span class="skill-level advanced">Advanced</span>
-                                </div>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <img src="assets/R.png" alt="R" class="skill-icon">
-                                <div class="skill-title">
-                                    <h3>R</h3>
-                                    <span class="skill-level beginner">Beginner</span>
-                                </div>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 60%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <img src="assets/pytorch.png" alt="PyTorch" class="skill-icon">
-                                <div class="skill-title">
-                                    <h3>PyTorch</h3>
-                                    <span class="skill-level beginner">Beginner</span>
-                                </div>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 40%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <img src="assets/Processing.ico" alt="Processing" class="skill-icon">
-                                <div class="skill-title">
-                                    <h3>Processing</h3>
-                                    <span class="skill-level intermediate">Intermediate</span>
-                                </div>
-                            </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 40%;"></div>
-                            </div>
-                        </div>
+                <div class="pro-content">
+                    <div class="skills-tabs">
+                        <button class="tab-btn active" data-target="tab-engineering"
+                            data-i18n="tab-engineering">Engineering</button>
+                        <button class="tab-btn" data-target="tab-software" data-i18n="tab-software">Software/ML</button>
+                        <button class="tab-btn" data-target="tab-certifications"
+                            data-i18n="tab-cert">Certifications</button>
                     </div>
 
-                    <!-- Certifications -->
-                    <div class="skills-grid" id="tab-certifications">
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <img src="assets/sectorcert.png" alt="NDT Level II" class="skill-icon">
-                                <div class="skill-title">
-                                    <h3>NDT Level II</h3>
-                                    <span class="skill-level certified">Certified</span>
+                    <div class="skills-content-area">
+                        <!-- Engineering -->
+                        <div class="skills-grid active" id="tab-engineering">
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/arduino.png" alt="Arduino" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>Arduino</h3>
+                                        <span class="skill-level intermediate">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" style="width: 60%;"></div>
                                 </div>
                             </div>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">Liquid Penetrant Testing & Inspection (EN
-                                ISO 9712/SNT-TC-1A)</p>
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/solidworks.png" alt="SOLIDWORKS" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>SOLIDWORKS</h3>
+                                        <span class="skill-level advanced">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/inventor.png" alt="Autodesk Inventor" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>Autodesk Inventor</h3>
+                                        <span class="skill-level advanced">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/fusion.png" alt="fusion" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>Fusion 360</h3>
+                                        <span class="skill-level advanced">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/ansys.png" alt="Ansys" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>Ansys</h3>
+                                        <span class="skill-level intermediate">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/autocad.png" alt="AutoCAD" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>AutoCAD</h3>
+                                        <span class="skill-level intermediate">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" style="width: 65%;"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <i data-lucide="languages"></i>
-                                <div class="skill-title">
-                                    <h3>Languages</h3>
-                                    <span class="skill-level advanced">Fluent</span>
+
+                        <!-- Software -->
+                        <div class="skills-grid" id="tab-software">
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/python.png" alt="Python" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>Python</h3>
+                                        <span class="skill-level beginner">Beginner</span>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" style="width: 25%;"></div>
                                 </div>
                             </div>
-                            <p style="margin-top: 10px; font-size: 0.9rem;">Fluent in English & Macedonian.</p>
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/c.png" alt="C++" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>C++</h3>
+                                        <span class="skill-level intermediate">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" style="width: 65%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/matlab.png" alt="MATLAB" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>MATLAB</h3>
+                                        <span class="skill-level advanced">Advanced</span>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/R.png" alt="R" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>R</h3>
+                                        <span class="skill-level beginner">Beginner</span>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/pytorch.png" alt="PyTorch" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>PyTorch</h3>
+                                        <span class="skill-level beginner">Beginner</span>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" style="width: 40%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/Processing.ico" alt="Processing" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>Processing</h3>
+                                        <span class="skill-level intermediate">Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar" style="width: 40%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Certifications -->
+                        <div class="skills-grid" id="tab-certifications">
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <img src="assets/sectorcert.png" alt="NDT Level II" class="skill-icon">
+                                    <div class="skill-title">
+                                        <h3>NDT Level II</h3>
+                                        <span class="skill-level certified">Certified</span>
+                                    </div>
+                                </div>
+                                <p style="margin-top: 10px; font-size: 0.9rem;">Liquid Penetrant Testing & Inspection
+                                    (EN
+                                    ISO 9712/SNT-TC-1A)</p>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-header">
+                                    <i data-lucide="languages"></i>
+                                    <div class="skill-title">
+                                        <h3>Languages</h3>
+                                        <span class="skill-level advanced">Fluent</span>
+                                    </div>
+                                </div>
+                                <p style="margin-top: 10px; font-size: 0.9rem;">Fluent in English & Macedonian.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -289,88 +413,186 @@
         <!-- Projects Section -->
         <section id="projects" class="section projects-section">
             <div class="content-wrapper">
-                <h2 data-i18n="projects-title">Experience & Projects</h2>
-                <p data-i18n="projects-desc">Highlighting core experiences, internships, and research endeavors that
-                    shape my career.</p>
-
-                <div class="skills-tabs">
-                    <button class="tab-btn active" data-target="tab-experience" data-i18n="tab-exp">Experience</button>
-                    <button class="tab-btn" data-target="tab-projects-list" data-i18n="tab-proj">Projects</button>
+                <!-- Professional Projects Header -->
+                <div class="pro-content">
+                    <h2 data-i18n="projects-title">Experience & Projects</h2>
+                    <p data-i18n="projects-desc">Highlighting core experiences, internships, and research endeavors that
+                        shape my career.</p>
                 </div>
 
-                <div class="projects-content-area">
-                    <div class="project-grid active" id="tab-experience">
-                        <div class="project-item">
-                            <img src="images/TSG_IS_Logo.jpg" alt="TSG Industry Service Logo"
-                                style="width: 60px; height: auto; border-radius: 8px; margin-bottom: 15px;">
-                            <h3>Engineering Intern</h3>
-                            <p><strong>TSG Industry Service DOO</strong></p>
-                            <p style="margin-top:10px; font-size:0.9rem;">Calculated pipeline corrosion rates for
-                                Trident
-                                Energy's FPSO rig. Assisted in developing the Macedonia-Greece 68km natural gas
-                                interconnector. Engineered a Python application utilizing optimization to significantly
-                                minimize pipe drop-off waste and project funding.</p>
-                        </div>
+                <!-- Hobby Projects Header -->
+                <div class="hobby-content">
+                    <h2 data-i18n="hobby-projects-title">Adventures & Memories</h2>
+                    <p data-i18n="hobby-projects-desc">Some of the experiences and personal milestones that define who I
+                        am beyond the resume.</p>
 
-                        <div class="project-item">
-                            <img src="assets/deptmeche.jfif" alt="A. James Clark School of Engineering Logo"
-                                style="width: 200px; height: auto; border-radius: 8px; margin-bottom: 15px;">
-                            <h3>Dr. Zhao Lab: Center for Risk and Reliability</h3>
-                            <p><strong>Undergraduate Research Assistant</strong></p>
-                            <p style="margin-top:10px; font-size:0.9rem;">Implemented a stochastic Genetic Algorithm
-                                using
-                                PyTorch with Weibull distribution and Monte Carlo sampling to optimize maintenance and
-                                predict Mean Time Between Failures for nuclear reactors.</p>
+                    <div class="hobby-grid">
+                        <div class="hobby-card">
+                            <span class="hobby-icon">🏔️</span>
+                            <h3>Alpine Adventures</h3>
+                            <p>From the slopes of the Balkans to the Alps, skiing has taken me to some of the most
+                                breathtaking mountain landscapes in Europe. Each season brings new challenges and
+                                unforgettable descents.</p>
                         </div>
-                        <div class="project-item">
-                            <img src="assets/deptmeche.jfif" alt="A. James Clark School of Engineering Logo"
-                                style="width: 200px; height: auto; border-radius: 8px; margin-bottom: 15px;">
-                            <h3>Innovation Bowl: High Temperature Heat Flux Sensor </h3>
-                            <p><strong>Undergraduate Researcher</strong></p>
-                            <p style="margin-top:10px; font-size:0.9rem;">Implemented thermoelectric & Seebeck effects
-                                for a
-                                high-temperature sensor at UMD’s IREAP lab. Won 1st Place & $25,000 grand prize
-                                (Radiance
-                                Technologies Innovation Bowl) for project excellence in product development.</p>
+                        <div class="hobby-card">
+                            <span class="hobby-icon">🌍</span>
+                            <h3>Travel Journal</h3>
+                            <p>Exploring cities and countryside across multiple continents — from the cobblestone
+                                streets of European capitals to the vibrant energy of new destinations. Every journey
+                                adds a new chapter.</p>
+                        </div>
+                        <div class="hobby-card">
+                            <span class="hobby-icon">📷</span>
+                            <h3>Photo Portfolio</h3>
+                            <p>Capturing moments that tell stories — golden hour landscapes, architectural details,
+                                candid portraits, and the raw beauty of nature. Photography is how I preserve memories.
+                            </p>
+                        </div>
+                        <div class="hobby-card">
+                            <span class="hobby-icon">🏅</span>
+                            <h3>Running Goals</h3>
+                            <p>Training for personal bests and pushing my endurance limits. Running isn't just exercise
+                                — it's meditation, discipline, and the constant pursuit of improvement.</p>
                         </div>
                     </div>
+                </div>
 
-                    <div class="project-grid" id="tab-projects-list">
-                        <div class="project-item">
-                            <h3>Team Project: Over-Terrain Vehicle</h3>
-                            <p><strong>Fire Suppression Robot</strong></p>
-                            <p style="margin-top:10px; font-size:0.9rem;">Designed and assembled an autonomous OTV
-                                utilizing
-                                a Vision System to navigate obstacles and extinguish flames. Extensive use of Fusion
-                                360,
-                                Kinetics/Kinematics, and fabrication methodologies.</p>
+                <div class="pro-content">
+                    <div class="skills-tabs">
+                        <button class="tab-btn active" data-target="tab-experience"
+                            data-i18n="tab-exp">Experience</button>
+                        <button class="tab-btn" data-target="tab-projects-list" data-i18n="tab-proj">Projects</button>
+                    </div>
+
+                    <div class="projects-content-area">
+                        <div class="project-grid active" id="tab-experience">
+                            <div class="project-item"
+                                data-details="&lt;div class='detail-meta'&gt;&lt;span class='detail-date'&gt;Summer 2025&lt;/span&gt;&lt;span class='detail-location'&gt;Skopje, Macedonia&lt;/span&gt;&lt;/div&gt;&lt;h4&gt;Key Contributions&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;Calculated pipeline corrosion rates for Trident Energy's FPSO rig using industry-standard NDT methodologies.&lt;/li&gt;&lt;li&gt;Assisted in developing the Macedonia-Greece 68km natural gas interconnector project documentation and engineering drawings.&lt;/li&gt;&lt;li&gt;Engineered a Python optimization application that significantly minimized pipe drop-off waste, reducing project material costs.&lt;/li&gt;&lt;li&gt;Performed on-site inspections and collaborated with senior engineers on pipeline integrity assessments.&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;Technologies Used&lt;/h4&gt;&lt;div class='detail-tags'&gt;&lt;span class='detail-tag'&gt;Python&lt;/span&gt;&lt;span class='detail-tag'&gt;NDT Inspection&lt;/span&gt;&lt;span class='detail-tag'&gt;Pipeline Engineering&lt;/span&gt;&lt;span class='detail-tag'&gt;SOLIDWORKS&lt;/span&gt;&lt;span class='detail-tag'&gt;AutoCAD&lt;/span&gt;&lt;span class='detail-tag'&gt;Microsoft Excel&lt;/span&gt;&lt;/div&gt;">
+                                <img src="images/TSG_IS_Logo.jpg" alt="TSG Industry Service Logo"
+                                    style="width: 60px; height: auto; border-radius: 8px; margin-bottom: 15px;">
+                                <h3>Engineering Intern</h3>
+                                <p><strong>TSG Industry Service DOO</strong></p>
+                                <p style="margin-top:10px; font-size:0.9rem;">Calculated pipeline corrosion rates for
+                                    Trident
+                                    Energy's FPSO rig. Assisted in developing the Macedonia-Greece 68km natural gas
+                                    interconnector. Engineered a Python application utilizing optimization to
+                                    significantly
+                                    minimize pipe drop-off waste and project funding.</p>
+                            </div>
+
+                            <div class="project-item"
+                                data-details="&lt;div class='detail-meta'&gt;&lt;span class='detail-date'&gt;Fall 2024 – Present&lt;/span&gt;&lt;span class='detail-location'&gt;College Park, MD&lt;/span&gt;&lt;/div&gt;&lt;h4&gt;Key Contributions&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;Implemented a stochastic Genetic Algorithm using PyTorch to optimize nuclear reactor maintenance scheduling.&lt;/li&gt;&lt;li&gt;Modeled component failure probability with Weibull distributions and Monte Carlo sampling techniques.&lt;/li&gt;&lt;li&gt;Predicted Mean Time Between Failures (MTBF) for critical reactor components, improving reliability analysis workflows.&lt;/li&gt;&lt;li&gt;Collaborated with Dr. Zhao and graduate students on academic publications and research presentations.&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;Technologies Used&lt;/h4&gt;&lt;div class='detail-tags'&gt;&lt;span class='detail-tag'&gt;PyTorch&lt;/span&gt;&lt;span class='detail-tag'&gt;Python&lt;/span&gt;&lt;span class='detail-tag'&gt;Monte Carlo Methods&lt;/span&gt;&lt;span class='detail-tag'&gt;Genetic Algorithms&lt;/span&gt;&lt;span class='detail-tag'&gt;MATLAB&lt;/span&gt;&lt;/div&gt;">
+                                <img src="assets/deptmeche.jfif" alt="A. James Clark School of Engineering Logo"
+                                    style="width: 200px; height: auto; border-radius: 8px; margin-bottom: 15px;">
+                                <h3>Dr. Zhao Lab: Center for Risk and Reliability</h3>
+                                <p><strong>Undergraduate Research Assistant</strong></p>
+                                <p style="margin-top:10px; font-size:0.9rem;">Implemented a stochastic Genetic Algorithm
+                                    using
+                                    PyTorch with Weibull distribution and Monte Carlo sampling to optimize maintenance
+                                    and
+                                    predict Mean Time Between Failures for nuclear reactors.</p>
+                            </div>
+                            <div class="project-item"
+                                data-details="&lt;div class='detail-meta'&gt;&lt;span class='detail-date'&gt;Spring 2024&lt;/span&gt;&lt;span class='detail-location'&gt;College Park, MD&lt;/span&gt;&lt;/div&gt;&lt;h4&gt;Key Contributions&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;Designed and prototyped a high-temperature heat flux sensor leveraging thermoelectric and Seebeck effects.&lt;/li&gt;&lt;li&gt;Conducted experiments at UMD's Institute for Research in Electronics and Applied Physics (IREAP) laboratory.&lt;/li&gt;&lt;li&gt;Won 1st Place and the $25,000 grand prize at the Radiance Technologies Innovation Bowl for excellence in product development.&lt;/li&gt;&lt;li&gt;Delivered technical presentations to a panel of industry judges and DoD representatives.&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;Technologies Used&lt;/h4&gt;&lt;div class='detail-tags'&gt;&lt;span class='detail-tag'&gt;Thermoelectrics&lt;/span&gt;&lt;span class='detail-tag'&gt;SOLIDWORKS&lt;/span&gt;&lt;span class='detail-tag'&gt;MATLAB&lt;/span&gt;&lt;span class='detail-tag'&gt;Sensor Design&lt;/span&gt;&lt;span class='detail-tag'&gt;Lab Testing&lt;/span&gt;&lt;/div&gt;">
+                                <img src="assets/deptmeche.jfif" alt="A. James Clark School of Engineering Logo"
+                                    style="width: 200px; height: auto; border-radius: 8px; margin-bottom: 15px;">
+                                <h3>Innovation Bowl: High Temperature Heat Flux Sensor </h3>
+                                <p><strong>Undergraduate Researcher</strong></p>
+                                <p style="margin-top:10px; font-size:0.9rem;">Implemented thermoelectric & Seebeck
+                                    effects
+                                    for a
+                                    high-temperature sensor at UMD’s IREAP lab. Won 1st Place & $25,000 grand prize
+                                    (Radiance
+                                    Technologies Innovation Bowl) for project excellence in product development.</p>
+                            </div>
                         </div>
-                        <div class="project-item">
-                            <h3>Autonomous Solar Panel Tracking System</h3>
-                            <p><strong>Arduino & 3D Printing Project</strong></p>
-                            <p style="margin-top:10px; font-size:0.9rem;">Currently in progress... Stay tuned for
-                                updates.</p>
-                        </div>
-                        <div class="project-item">
-                            <h3>FEA Study on Pedestrian Overpass "Vlajko"</h3>
-                            <p><strong>Ansys Mechanical & Static Structural</strong></p>
-                            <p style="margin-top:10px; font-size:0.9rem;">Currently in progress... Stay tuned for
-                                updates.</p>
-                        </div>
-                        <div class="project-item">
-                            <h3>Personal Portfolio Website</h3>
-                            <p><strong>HTML, CSS, JavaScript, Particle.js, Git</strong></p>
-                            <p style="margin-top:10px; font-size:0.9rem;">Designed a responsive, modern personal
-                                portfolio website from scratch. Implemented a dynamic particle animation
-                                background using Particle.js, smooth scrolling with GSAP, and a
-                                comprehensive localization system supporting English and Macedonian.
-                                Managed the project using Git and GitHub for version control.
-                            </p>
+
+                        <div class="project-grid" id="tab-projects-list">
+                            <div class="project-item"
+                                data-details="&lt;div class='detail-meta'&gt;&lt;span class='detail-date'&gt;Fall 2023&lt;/span&gt;&lt;span class='detail-location'&gt;College Park, MD&lt;/span&gt;&lt;/div&gt;&lt;h4&gt;Key Highlights&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;Designed and assembled an autonomous Over-Terrain Vehicle capable of navigating complex obstacle courses.&lt;/li&gt;&lt;li&gt;Integrated a vision system for real-time flame detection and autonomous fire suppression.&lt;/li&gt;&lt;li&gt;Performed full kinetic and kinematic analysis to optimize drivetrain and steering geometry.&lt;/li&gt;&lt;li&gt;Fabricated custom components using 3D printing, laser cutting, and manual machining.&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;Technologies Used&lt;/h4&gt;&lt;div class='detail-tags'&gt;&lt;span class='detail-tag'&gt;Fusion 360&lt;/span&gt;&lt;span class='detail-tag'&gt;Arduino&lt;/span&gt;&lt;span class='detail-tag'&gt;3D Printing&lt;/span&gt;&lt;span class='detail-tag'&gt;Laser Cutting&lt;/span&gt;&lt;span class='detail-tag'&gt;Computer Vision&lt;/span&gt;&lt;/div&gt;">
+                                <h3>Team Project: Over-Terrain Vehicle</h3>
+                                <p><strong>Fire Suppression Robot</strong></p>
+                                <p style="margin-top:10px; font-size:0.9rem;">Designed and assembled an autonomous OTV
+                                    utilizing
+                                    a Vision System to navigate obstacles and extinguish flames. Extensive use of Fusion
+                                    360,
+                                    Kinetics/Kinematics, and fabrication methodologies.</p>
+                            </div>
+                            <div class="project-item"
+                                data-details="&lt;div class='detail-meta'&gt;&lt;span class='detail-date'&gt;In Progress&lt;/span&gt;&lt;/div&gt;&lt;h4&gt;Project Overview&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;Developing a dual-axis solar panel tracking system that follows the sun to maximize energy capture.&lt;/li&gt;&lt;li&gt;Using Arduino microcontroller with LDR sensors for real-time sun position detection.&lt;/li&gt;&lt;li&gt;3D-printing custom mounts and gear assemblies for smooth panel articulation.&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;Technologies Used&lt;/h4&gt;&lt;div class='detail-tags'&gt;&lt;span class='detail-tag'&gt;Arduino&lt;/span&gt;&lt;span class='detail-tag'&gt;3D Printing&lt;/span&gt;&lt;span class='detail-tag'&gt;C++&lt;/span&gt;&lt;span class='detail-tag'&gt;Fusion 360&lt;/span&gt;&lt;span class='detail-tag'&gt;Servo Motors&lt;/span&gt;&lt;/div&gt;">
+                                <h3>Autonomous Solar Panel Tracking System</h3>
+                                <p><strong>Arduino & 3D Printing Project</strong></p>
+                                <p style="margin-top:10px; font-size:0.9rem;">Currently in progress... Stay tuned for
+                                    updates.</p>
+                            </div>
+                            <div class="project-item"
+                                data-details="&lt;div class='detail-meta'&gt;&lt;span class='detail-date'&gt;In Progress&lt;/span&gt;&lt;/div&gt;&lt;h4&gt;Project Overview&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;Conducting a comprehensive Finite Element Analysis of the 'Vlajko' pedestrian overpass in Skopje.&lt;/li&gt;&lt;li&gt;Modeling the structure in Ansys Mechanical to evaluate static structural integrity under various load cases.&lt;/li&gt;&lt;li&gt;Analyzing stress concentrations, deflection patterns, and safety factors against building codes.&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;Technologies Used&lt;/h4&gt;&lt;div class='detail-tags'&gt;&lt;span class='detail-tag'&gt;Ansys Mechanical&lt;/span&gt;&lt;span class='detail-tag'&gt;Static Structural&lt;/span&gt;&lt;span class='detail-tag'&gt;FEA&lt;/span&gt;&lt;span class='detail-tag'&gt;SOLIDWORKS&lt;/span&gt;&lt;/div&gt;">
+                                <h3>FEA Study on Pedestrian Overpass "Vlajko"</h3>
+                                <p><strong>Ansys Mechanical & Static Structural</strong></p>
+                                <p style="margin-top:10px; font-size:0.9rem;">Currently in progress... Stay tuned for
+                                    updates.</p>
+                            </div>
+                            <div class="project-item"
+                                data-details="&lt;div class='detail-meta'&gt;&lt;span class='detail-date'&gt;Spring 2025&lt;/span&gt;&lt;/div&gt;&lt;h4&gt;Key Highlights&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;Designed and developed a fully responsive, modern portfolio website from scratch using vanilla HTML, CSS, and JavaScript.&lt;/li&gt;&lt;li&gt;Implemented dynamic particle animation background using Particle.js for visual depth.&lt;/li&gt;&lt;li&gt;Built a comprehensive English/Macedonian localization system with flag-based toggle.&lt;/li&gt;&lt;li&gt;Added glassmorphism UI, scroll-snapping, expandable project modals, and a live weather/time gadget.&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;Technologies Used&lt;/h4&gt;&lt;div class='detail-tags'&gt;&lt;span class='detail-tag'&gt;HTML5&lt;/span&gt;&lt;span class='detail-tag'&gt;CSS3&lt;/span&gt;&lt;span class='detail-tag'&gt;JavaScript&lt;/span&gt;&lt;span class='detail-tag'&gt;Particle.js&lt;/span&gt;&lt;span class='detail-tag'&gt;Git&lt;/span&gt;&lt;span class='detail-tag'&gt;Lucide Icons&lt;/span&gt;&lt;/div&gt;">
+                                <h3>Personal Portfolio Website</h3>
+                                <p><strong>HTML, CSS, JavaScript, Particle.js, Git</strong></p>
+                                <p style="margin-top:10px; font-size:0.9rem;">Designed a responsive, modern personal
+                                    portfolio website from scratch. Implemented a dynamic particle animation
+                                    background using Particle.js, smooth scrolling with GSAP, and a
+                                    comprehensive localization system supporting English and Macedonian.
+                                    Managed the project using Git and GitHub for version control.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Photo Gallery Section (Hobby Mode Only) -->
+        <section id="gallery" class="section gallery-section">
+            <div class="content-wrapper">
+                <div class="hobby-content">
+                    <h2 data-i18n="gallery-title">Photo Gallery</h2>
+                    <p data-i18n="gallery-desc">A collection of moments captured digitally..</p>
+
+                    <!-- Category Filter Tabs (generated by JS) -->
+                    <div class="gallery-filters" id="gallery-filters"></div>
+
+                    <!-- Photo Counter -->
+                    <div class="gallery-counter" id="gallery-counter"></div>
+
+                    <!-- Masonry Grid (populated by JS from gallery-config.js) -->
+                    <div class="gallery-grid" id="gallery-grid">
+                        <!-- Empty state shown when no photos are configured -->
+                        <div class="gallery-empty" id="gallery-empty">
+                            <span class="gallery-empty-icon">📷</span>
+                            <h3>No Photos Yet</h3>
+                            <p>Add your photos by editing <code>gallery-config.js</code></p>
+                            <p class="gallery-empty-hint">Drop your images into the <code>/gallery</code> folder, then
+                                add entries to the photos array.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Lightbox -->
+        <div id="gallery-lightbox" class="gallery-lightbox">
+            <button class="lightbox-close" id="lightbox-close" aria-label="Close">
+                <i data-lucide="x"></i>
+            </button>
+            <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous">
+                <i data-lucide="chevron-left"></i>
+            </button>
+            <button class="lightbox-next" id="lightbox-next" aria-label="Next">
+                <i data-lucide="chevron-right"></i>
+            </button>
+            <div class="lightbox-content">
+                <img id="lightbox-img" src="" alt="">
+                <div class="lightbox-caption" id="lightbox-caption"></div>
+            </div>
+        </div>
 
         <!-- Contact Section -->
         <section id="contact" class="section contact-section">
@@ -414,6 +636,7 @@
     </div>
 
     <!-- Application Script -->
+    <script src="gallery-config.js"></script>
     <script src="translations.js"></script>
     <script src="script.js"></script>
     <script>

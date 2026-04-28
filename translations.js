@@ -21,7 +21,18 @@ const translations = {
         "tab-exp": "Experience",
         "tab-proj": "Projects",
         "contact-title": "Let's Connect",
-        "contact-desc": "Always open for new learning opportunities, collaborations, experiences and collaboration with like-minded people. Feel free to reach out."
+        "contact-desc": "Always open for new learning opportunities, collaborations, experiences and collaboration with like-minded people. Feel free to reach out.",
+        // Hobby Mode
+        "hobby-hero-title": "Beyond Engineering",
+        "hobby-hero-desc": "When I'm not solving engineering problems, you'll find me behind a camera lens, carving down ski slopes, exploring new countries, or chasing a runner's high.",
+        "hobby-hero-btn": "Explore My World",
+        "hobby-about-title": "Life Outside the Lab",
+        "hobby-about-p1": "Outside the engineering world, I'm driven by a deep love for <strong>photography</strong> — capturing landscapes, street scenes, and candid moments wherever I travel. My camera is my constant companion on every adventure.",
+        "hobby-about-p2": "I'm an avid <strong>skier</strong> who lives for the adrenaline of fresh powder days, a dedicated <strong>runner</strong> always chasing new personal records, and a passionate <strong>traveler</strong> with an insatiable curiosity for new cultures, cuisines, and landscapes. These pursuits keep me balanced, energized, and inspired.",
+        "hobby-skills-title": "Passions & Pursuits",
+        "hobby-skills-desc": "The activities that fuel my creativity, keep me grounded, and make life an adventure.",
+        "hobby-projects-title": "Adventures & Memories",
+        "hobby-projects-desc": "Some of the experiences and personal milestones that define who I am beyond the resume."
     },
     mk: {
         "nav-home": "Почетна",
@@ -45,7 +56,18 @@ const translations = {
         "tab-exp": "Искуство",
         "tab-proj": "Проекти",
         "contact-title": "Контакт",
-        "contact-desc": "Секогаш отворен за нови можности за учење, соработки, искуства и поврзување со истомисленици. Слободно контактирајте ме."
+        "contact-desc": "Секогаш отворен за нови можности за учење, соработки, искуства и поврзување со истомисленици. Слободно контактирајте ме.",
+        // Hobby Mode
+        "hobby-hero-title": "Надвор од Инженерството",
+        "hobby-hero-desc": "Кога не решавам инженерски проблеми, ќе ме најдете зад објективот на камерата, на скијачки патеки, во истражување на нови земји, или во трчање.",
+        "hobby-hero-btn": "Истражи Го Мојот Свет",
+        "hobby-about-title": "Живот Надвор од Лабораторијата",
+        "hobby-about-p1": "Надвор од инженерскиот свет, ме движи длабока љубов кон <strong>фотографијата</strong> — фаќање пејзажи, улични сцени и спонтани моменти каде и да патувам. Камерата ми е постојан придружник на секоја авантура.",
+        "hobby-about-p2": "Јас сум страствен <strong>скијач</strong> кој живее за адреналинот на свеж снег, посветен <strong>тркач</strong> кој секогаш лови нови лични рекорди, и страствен <strong>патник</strong> со ненаситна љубопитност за нови култури, кујни и пејзажи.",
+        "hobby-skills-title": "Страсти и Интереси",
+        "hobby-skills-desc": "Активностите кои ја поттикнуваат мојата креативност, ме држат на земја и го прават животот авантура.",
+        "hobby-projects-title": "Авантури и Спомени",
+        "hobby-projects-desc": "Некои од искуствата и личните моменти кои ме дефинираат надвор од професионалната биографија."
     }
 };
 

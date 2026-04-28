@@ -271,13 +271,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
                 
-                // Add placeholder for extra details
-                const extraDetails = document.createElement('p');
-                extraDetails.style.marginTop = "20px";
-                extraDetails.style.borderTop = "1px solid rgba(255,255,255,0.1)";
-                extraDetails.style.paddingTop = "20px";
-                extraDetails.innerHTML = "<em>More detailed project analysis, diagrams, and photos will be displayed here upon expansion.</em>";
-                modalBody.appendChild(extraDetails);
+                // Render expanded details from data-details attribute
+                const detailsHTML = item.getAttribute('data-details');
+                if (detailsHTML) {
+                    const detailsSection = document.createElement('div');
+                    detailsSection.className = 'modal-details';
+                    detailsSection.innerHTML = detailsHTML;
+                    modalBody.appendChild(detailsSection);
+                }
 
                 // Show modal
                 modal.classList.add('show');
@@ -336,5 +337,261 @@ document.addEventListener('DOMContentLoaded', () => {
             setLanguage(targetLang);
         });
     });
+
+    // --- 10. Gear Toggle: Professional ↔ Hobby Mode ---
+    const gearToggle = document.getElementById('gear-toggle');
+    const modeOverlay = document.getElementById('mode-overlay');
+    let isHobbyMode = false;
+
+    // Particle configurations
+    const proParticlesConfig = {
+        "particles": {
+            "number": { "value": 30, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#ff3333" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.4, "random": false },
+            "size": { "value": 3, "random": true },
+            "line_linked": { "enable": true, "distance": 150, "color": "#ff3333", "opacity": 0.3, "width": 1.5 },
+            "move": { "enable": true, "speed": 1.0, "direction": "none", "random": true, "out_mode": "out" }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true },
+            "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 0.6 } } }
+        },
+        "retina_detect": true
+    };
+
+    const hobbyParticlesConfig = {
+        "particles": {
+            "number": { "value": 30, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#3388ff" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.4, "random": false },
+            "size": { "value": 3, "random": true },
+            "line_linked": { "enable": true, "distance": 150, "color": "#3388ff", "opacity": 0.3, "width": 1.5 },
+            "move": { "enable": true, "speed": 1.0, "direction": "none", "random": true, "out_mode": "out" }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true },
+            "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 0.6 } } }
+        },
+        "retina_detect": true
+    };
+
+    function toggleMode() {
+        isHobbyMode = !isHobbyMode;
+
+        // Flash overlay
+        if (modeOverlay) {
+            modeOverlay.style.background = isHobbyMode
+                ? 'radial-gradient(circle, rgba(51,136,255,0.3), transparent)'
+                : 'radial-gradient(circle, rgba(255,51,51,0.3), transparent)';
+            modeOverlay.classList.add('flash');
+            setTimeout(() => modeOverlay.classList.remove('flash'), 800);
+        }
+
+        // Toggle body class
+        document.body.classList.toggle('hobby-mode', isHobbyMode);
+
+        // Toggle gear position
+        if (gearToggle) {
+            gearToggle.classList.toggle('hobby-position', isHobbyMode);
+        }
+
+        // Spin gear on toggle (extra rotation animation)
+        if (gearImage) {
+            const currentRotation = parseFloat(gearImage.style.transform?.replace(/[^0-9.-]/g, '')) || 0;
+            const spinAmount = isHobbyMode ? 360 : -360;
+            gearImage.style.transition = 'transform 0.9s cubic-bezier(0.76, 0, 0.24, 1)';
+            gearImage.style.transform = `rotate(${currentRotation + spinAmount}deg)`;
+            // Reset transition for scroll-based rotation
+            setTimeout(() => {
+                gearImage.style.transition = 'transform 0.1s linear';
+            }, 1000);
+        }
+
+        // Re-init particles with new color
+        if (window.pJSDom && window.pJSDom.length > 0) {
+            window.pJSDom[0].pJS.fn.vendors.destroypJS();
+            window.pJSDom = [];
+        }
+        const config = isHobbyMode ? hobbyParticlesConfig : proParticlesConfig;
+        particlesJS('particles-js', config);
+
+        // Scroll to top
+        if (fullpage) {
+            fullpage.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    if (gearToggle) {
+        gearToggle.addEventListener('click', toggleMode);
+        // Keyboard accessibility
+        gearToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMode();
+            }
+        });
+    }
+
+    // --- 11. Photo Gallery Logic ---
+    const galleryGrid = document.getElementById('gallery-grid');
+    const galleryFilters = document.getElementById('gallery-filters');
+    const galleryCounter = document.getElementById('gallery-counter');
+    const galleryEmpty = document.getElementById('gallery-empty');
+    const lightbox = document.getElementById('gallery-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+
+    let currentLightboxIndex = 0;
+    let currentFilteredPhotos = [];
+
+    function initGallery() {
+        if (!window.galleryConfig || !galleryGrid) return;
+
+        const { categories, photos } = window.galleryConfig;
+
+        // Build filter buttons
+        if (galleryFilters && categories) {
+            categories.forEach((cat, i) => {
+                const btn = document.createElement('button');
+                btn.className = `gallery-filter-btn${i === 0 ? ' active' : ''}`;
+                btn.setAttribute('data-category', cat.key);
+                btn.innerHTML = `<span class="filter-icon">${cat.icon}</span> ${cat.label}`;
+                btn.addEventListener('click', () => filterGallery(cat.key));
+                galleryFilters.appendChild(btn);
+            });
+        }
+
+        // Render the gallery
+        renderGallery('all');
+    }
+
+    function renderGallery(category) {
+        if (!window.galleryConfig) return;
+
+        const { photos } = window.galleryConfig;
+
+        // Filter photos
+        currentFilteredPhotos = category === 'all'
+            ? [...photos]
+            : photos.filter(p => p.category === category);
+
+        // Clear existing items (but keep empty state element)
+        const existingItems = galleryGrid.querySelectorAll('.gallery-item');
+        existingItems.forEach(item => item.remove());
+
+        // Show/hide empty state
+        if (currentFilteredPhotos.length === 0) {
+            if (galleryEmpty) galleryEmpty.style.display = 'flex';
+            if (galleryCounter) galleryCounter.textContent = '';
+            return;
+        }
+
+        if (galleryEmpty) galleryEmpty.style.display = 'none';
+
+        // Update counter
+        if (galleryCounter) {
+            const totalPhotos = photos.length;
+            const showing = currentFilteredPhotos.length;
+            galleryCounter.textContent = category === 'all'
+                ? `${totalPhotos} photo${totalPhotos !== 1 ? 's' : ''}`
+                : `Showing ${showing} of ${totalPhotos} photos`;
+        }
+
+        // Create gallery items
+        currentFilteredPhotos.forEach((photo, index) => {
+            const item = document.createElement('div');
+            item.className = `gallery-item${photo.featured ? ' featured' : ''}`;
+            item.style.animationDelay = `${index * 0.08}s`;
+
+            // Find category label
+            const catInfo = window.galleryConfig.categories.find(c => c.key === photo.category);
+            const catLabel = catInfo ? catInfo.label : photo.category;
+
+            item.innerHTML = `
+                <img src="${photo.src}" alt="${photo.alt}" loading="lazy">
+                <div class="gallery-overlay">
+                    <p class="gallery-caption">${photo.alt}</p>
+                    <span class="gallery-category-badge">${catLabel}</span>
+                </div>
+            `;
+
+            item.addEventListener('click', () => openLightbox(index));
+            galleryGrid.appendChild(item);
+        });
+    }
+
+    function filterGallery(category) {
+        // Update active button
+        const buttons = galleryFilters.querySelectorAll('.gallery-filter-btn');
+        buttons.forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-category') === category);
+        });
+
+        renderGallery(category);
+    }
+
+    // Lightbox controls
+    function openLightbox(index) {
+        if (!lightbox || currentFilteredPhotos.length === 0) return;
+        currentLightboxIndex = index;
+        updateLightbox();
+        lightbox.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        // Re-render lucide icons inside lightbox
+        lucide.createIcons();
+    }
+
+    function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove('show');
+        document.body.style.overflow = 'auto';
+    }
+
+    function updateLightbox() {
+        const photo = currentFilteredPhotos[currentLightboxIndex];
+        if (!photo) return;
+        lightboxImg.src = photo.src;
+        lightboxImg.alt = photo.alt;
+        lightboxCaption.textContent = photo.alt;
+    }
+
+    function lightboxPrevious() {
+        currentLightboxIndex = (currentLightboxIndex - 1 + currentFilteredPhotos.length) % currentFilteredPhotos.length;
+        updateLightbox();
+    }
+
+    function lightboxNextFn() {
+        currentLightboxIndex = (currentLightboxIndex + 1) % currentFilteredPhotos.length;
+        updateLightbox();
+    }
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxPrev) lightboxPrev.addEventListener('click', lightboxPrevious);
+    if (lightboxNext) lightboxNext.addEventListener('click', lightboxNextFn);
+
+    if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+    }
+
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox || !lightbox.classList.contains('show')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') lightboxPrevious();
+        if (e.key === 'ArrowRight') lightboxNextFn();
+    });
+
+    // Initialize gallery
+    initGallery();
 
 });
