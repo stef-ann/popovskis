@@ -29,6 +29,7 @@ window.galleryConfig = {
         { key: 'skiing', label: 'Skiing', icon: '⛷️' },
         { key: 'stars', label: 'Stars', icon: '✨' },
         { key: 'metro', label: 'Metro', icon: '🚇' },
+        { key: 'lab', label: 'Lab', icon: '🔬' },
     ],
 
     // ── Add your photos here ──
@@ -58,63 +59,201 @@ window.galleryConfig = {
         //     category: 'people',
         // },
 
+        // ── Photos from /gallery/updated gallery ──
         {
-            src: 'gallery/DSCF1669.JPG',
-            alt: 'Queensbridge, New York City, USA',
-            category: 'travel',
-        },
-        {
-            src: 'gallery/DSCF1593.JPG',
+            src: 'gallery/updated gallery/DSCF1593.avif',
             alt: 'Empire State Building, New York City, USA',
             category: 'travel',
         },
         {
-            src: 'gallery/DSCF0451edit1.jpg',
+            src: 'gallery/updated gallery/DSCF1547.avif',
+            alt: 'Steam on a city street at night',
+            category: 'travel',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF1669.avif',
+            alt: 'Queensbridge, New York City, USA',
+            category: 'travel',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF1670.avif',
+            alt: 'Queensbridge, New York City, USA',
+            category: 'travel',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF1671.avif',
+            alt: 'Queensbridge, New York City, USA',
+            category: 'travel',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF1672.avif',
+            alt: 'Queensbridge, New York City, USA',
+            category: 'travel',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF0451edit1.avif',
             alt: 'College Park, Maryland, USA',
             category: 'travel',
         },
         {
-            src: 'gallery/DSCF1290.png',
-            alt: 'College Park, Maryland, USA',
-            category: 'Stars',
-        },
-        {
-            src: 'gallery/DSCF1419.png',
-            alt: 'Lagadin, Ohrid, Macedonia',
-            category: 'Stars',
-        },
-        {
-            src: 'gallery/untitled-1-view.png',
-            alt: 'WMATA, dmv',
-            category: 'metro',
-        },
-        {
-            src: 'gallery/DSCF0920-2-cropped.png',
+            src: 'gallery/updated gallery/DSCF0920-2-cropped.avif',
             alt: 'Charleston, SC, USA',
             category: 'architecture',
         },
         {
-            src: 'gallery/ski1.JPEG',
-            alt: 'Val Thorens ',
+            src: 'gallery/updated gallery/untitled-1-view.avif',
+            alt: 'WMATA Metro station, DMV',
+            category: 'metro',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF2209.avif',
+            alt: 'Mountain range above the forest',
+            category: 'landscapes',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF2214.avif',
+            alt: 'Dirt road toward the summit',
+            category: 'landscapes',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF2218.avif',
+            alt: 'Summer meadow on a mountain hike',
+            category: 'landscapes',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF2231.avif',
+            alt: 'Rocky ridge against a clear sky',
+            category: 'landscapes',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF2234.avif',
+            alt: 'Rocky slope and wild grass',
+            category: 'landscapes',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF2235.avif',
+            alt: 'Limestone outcrop on the hillside',
+            category: 'landscapes',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF2236.avif',
+            alt: 'Hiking up the valley',
+            category: 'landscapes',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF2245.avif',
+            alt: 'Meadow below the peaks',
+            category: 'landscapes',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF2264.avif',
+            alt: 'Cliffs above the valley',
+            category: 'landscapes',
+        },
+        {
+            src: 'gallery/updated gallery/mountain.avif',
+            alt: 'City view from the mountain',
+            category: 'landscapes',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF2250.avif',
+            alt: 'On the trail',
+            category: 'people',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF2251.avif',
+            alt: 'Resting on the trail',
+            category: 'people',
+        },
+        {
+            src: 'gallery/updated gallery/ski1.avif',
+            alt: 'Val Thorens',
             category: 'skiing',
         },
         {
-            src: 'gallery/ski2.JPEG',
-            alt: 'Val Thorens ',
+            src: 'gallery/updated gallery/ski2.avif',
+            alt: 'Val Thorens',
             category: 'skiing',
         },
         {
-            src: 'gallery/ski3.JPEG',
-            alt: 'Val Thorens ',
+            src: 'gallery/updated gallery/ski3.avif',
+            alt: 'Val Thorens',
             category: 'skiing',
         },
-        // ski4.JPEG isn't in /gallery yet — uncomment once the file is added.
-        // {
-        //     src: 'gallery/ski4.JPEG',
-        //     alt: 'Val Thorens ',
-        //     category: 'skiing',
-        // },
-
-
+        {
+            src: 'gallery/updated gallery/DSCF1290.avif',
+            alt: 'College Park, Maryland, USA',
+            category: 'stars',
+        },
+        {
+            src: 'gallery/updated gallery/DSCF1419.avif',
+            alt: 'Lagadin, Ohrid, Macedonia',
+            category: 'stars',
+        },
+        {
+            src: 'gallery/updated gallery/moonlagadin1.avif',
+            alt: 'Moon over Lagadin, Ohrid, Macedonia',
+            category: 'stars',
+        },
+        {
+            src: 'gallery/updated gallery/IMG_6772.avif',
+            alt: 'Night sky',
+            category: 'stars',
+        },
+        {
+            src: 'gallery/updated gallery/mats1.avif',
+            alt: 'Specimen under the stereo microscope',
+            category: 'lab',
+        },
+        {
+            src: 'gallery/updated gallery/mats2.avif',
+            alt: 'Specimen under the stereo microscope',
+            category: 'lab',
+        },
+        {
+            src: 'gallery/updated gallery/mats7.avif',
+            alt: 'Specimen under the stereo microscope',
+            category: 'lab',
+        },
+        {
+            src: 'gallery/updated gallery/mats3.avif',
+            alt: 'Composite specimen under the microscope',
+            category: 'lab',
+        },
+        {
+            src: 'gallery/updated gallery/mats5.avif',
+            alt: 'Composite specimen under the microscope',
+            category: 'lab',
+        },
+        {
+            src: 'gallery/updated gallery/mats6.avif',
+            alt: 'Specimen detail under the microscope',
+            category: 'lab',
+        },
+        {
+            src: 'gallery/updated gallery/mats4.avif',
+            alt: 'Experimental test rig',
+            category: 'lab',
+        },
+        {
+            src: 'gallery/updated gallery/mats8.avif',
+            alt: 'Test rig under the lights',
+            category: 'lab',
+        },
+        {
+            src: 'gallery/updated gallery/research1.avif',
+            alt: 'Oscilloscope readout during testing',
+            category: 'lab',
+        },
+        {
+            src: 'gallery/updated gallery/research2.avif',
+            alt: 'Oscilloscope readout during validation testing',
+            category: 'lab',
+        },
+        {
+            src: 'gallery/updated gallery/research3.avif',
+            alt: 'Piezoelectric specimen in the test fixture',
+            category: 'lab',
+        },
     ]
 };
