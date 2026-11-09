@@ -64,12 +64,12 @@ window.galleryConfig = {
             category: 'travel',
         },
         {
-            src: 'gallery/DSCF1593.jpg',
+            src: 'gallery/DSCF1593.JPG',
             alt: 'Empire State Building, New York City, USA',
             category: 'travel',
         },
         {
-            src: 'gallery/DSCF0451edit1.JPG',
+            src: 'gallery/DSCF0451edit1.jpg',
             alt: 'College Park, Maryland, USA',
             category: 'travel',
         },
@@ -108,11 +108,12 @@ window.galleryConfig = {
             alt: 'Val Thorens ',
             category: 'skiing',
         },
-        {
-            src: 'gallery/ski4.JPEG',
-            alt: 'Val Thorens ',
-            category: 'skiing',
-        },
+        // ski4.JPEG isn't in /gallery yet — uncomment once the file is added.
+        // {
+        //     src: 'gallery/ski4.JPEG',
+        //     alt: 'Val Thorens ',
+        //     category: 'skiing',
+        // },
 
 
     ]
