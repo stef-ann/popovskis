@@ -485,6 +485,46 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSpotify();
     }
 
+    /* ---------- Resume viewer (PDF.js, lazy-loaded) ---------- */
+    const resumeViewer = document.getElementById('resume-viewer');
+    if (resumeViewer) {
+        const PDFJS = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/';
+
+        const renderResume = async () => {
+            try {
+                const pdfjs = await import(PDFJS + 'pdf.min.mjs');
+                pdfjs.GlobalWorkerOptions.workerSrc = PDFJS + 'pdf.worker.min.mjs';
+                const pdf = await pdfjs.getDocument(resumeViewer.dataset.src).promise;
+                const width = resumeViewer.clientWidth;
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                const pages = document.createDocumentFragment();
+
+                for (let n = 1; n <= pdf.numPages; n++) {
+                    const page = await pdf.getPage(n);
+                    const scale = width / page.getViewport({ scale: 1 }).width;
+                    const viewport = page.getViewport({ scale: scale * dpr });
+                    const canvas = document.createElement('canvas');
+                    canvas.className = 'resume-page';
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+                    pages.appendChild(canvas);
+                }
+                resumeViewer.replaceChildren(pages);
+            } catch (e) {
+                // leave the fallback link in place
+            }
+        };
+
+        const resumeObserver = new IntersectionObserver(entries => {
+            if (entries.some(e => e.isIntersecting)) {
+                resumeObserver.disconnect();
+                renderResume();
+            }
+        }, { rootMargin: '400px' });
+        resumeObserver.observe(resumeViewer);
+    }
+
     /* ---------- Misc ---------- */
     const year = document.getElementById('year');
     if (year) year.textContent = new Date().getFullYear();

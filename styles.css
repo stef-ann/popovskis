@@ -15,7 +15,7 @@
     --line: rgba(var(--ink-rgb), 0.15);
     --surface: rgba(var(--ink-rgb), 0.03);
 
-    --font: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    --font: "Geologica", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
     --gutter: clamp(1.25rem, 5vw, 3.2rem);
@@ -95,7 +95,7 @@ ol {
 }
 
 strong {
-    font-weight: 500;
+    font-weight: inherit;
     color: var(--ink);
 }
 
@@ -631,6 +631,89 @@ h3 {
     max-width: 40rem;
     font-size: 15px;
     color: var(--ink-95);
+}
+
+/* ---------- About: text left, resume right ---------- */
+.about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem 4rem;
+    align-items: stretch;
+}
+
+.about-text h2 {
+    margin-bottom: 1.5rem;
+}
+
+.resume {
+    display: flex;
+    flex-direction: column;
+}
+
+.resume-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.resume-actions {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.resume-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    transition: color 0.2s;
+}
+
+.resume-link:hover {
+    color: var(--ink);
+}
+
+/* The frame fills whatever height the text column sets; `contain: size`
+   stops the rendered pages from stretching the row taller. */
+.resume-frame {
+    flex: 1 1 0;
+    min-height: 22rem;
+    contain: size;
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+    width: 100%;
+    overflow-y: auto;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .resume-frame {
+        flex: none;
+        height: 70vh;
+    }
+}
+
+.resume-page {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #fff;
+}
+
+.resume-fallback {
+    padding: 2rem;
+    color: var(--ink-light);
 }
 
 /* ---------- Card grid ---------- */
