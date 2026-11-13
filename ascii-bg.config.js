@@ -31,29 +31,30 @@ export default {
 
     // Size of each character / dot spacing, in pixels.
     // null = the preset's default (about 10–11; 'fluid' is 7).
-    cellSize: null,
+    cellSize: 8,
 
     // 'dot' = halftone dots, 'glyph' = text characters, null = preset default
     // ('swell' defaults to dots, every other preset to characters).
-    mark: null,
+    mark: 'glyph',
 
     // Which characters to use, from empty to dense. Either a named set:
     //   'standard' 'asciify' 'minimal' 'detailed' 'letters' 'technical'
     //   'blocks' 'braille' 'dots' 'kanji' 'fish'
     // or your own string, e.g. ' .:-=+*#'. null = preset default.
-    charset: null,
+    charset: 'kanji',
 
     // Mouse interaction: false = off, true = preset default,
     // or 'trail' | 'fluid' | 'lantern'.
-    cursor: false,
+    cursor: 'lantern',
+    palette: '#8fd3c7',
 
     // The word used by the 'wordField' preset.
     text: 'STEFAN',
 
     // Dot/character colour for each site theme (plain hex works best).
     colors: {
-        dark: '#8a8886',   // used on the dark theme
-        light: '#7d7b78',  // used on the light theme
+        dark: '#601699',   // used on the dark theme
+        light: '#ff0000',  // used on the light theme
     },
 
     // How much the background fades under the top header (0 = hidden, 1 = full).
