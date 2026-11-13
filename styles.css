@@ -34,6 +34,24 @@
     --ink-muted: rgba(var(--ink-rgb), 0.5);
 }
 
+/* ---------- Ambient ASCII background ----------
+   Colours, opacity, preset etc. are set in ascii-bg.config.js */
+.page-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.2s var(--ease);
+    /* quieter under the header strip, as the engine's guidelines suggest */
+    -webkit-mask-image: linear-gradient(to bottom, rgb(0 0 0 / var(--ascii-header-fade, .26)), rgb(0 0 0 / var(--ascii-header-fade, .26)) 56px, #000 152px);
+    mask-image: linear-gradient(to bottom, rgb(0 0 0 / var(--ascii-header-fade, .26)), rgb(0 0 0 / var(--ascii-header-fade, .26)) 56px, #000 152px);
+}
+
+.page-bg.is-ready {
+    opacity: 1;
+}
+
 [hidden] {
     display: none !important;
 }
@@ -51,10 +69,12 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-h);
     background: var(--bg);
+    transition: background-color 0.5s var(--ease);
 }
 
+/* body stays transparent so the fixed ASCII field (z-index: -1) shows through */
 body {
-    background: var(--bg);
+    background: transparent;
     color: var(--ink);
     font-family: var(--font);
     font-size: 16px;

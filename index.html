@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Stefan Popovski - Mechanical Engineering Portfolio">
     <title>Stefan Popovski | Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300..600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -23,6 +24,9 @@
 </head>
 
 <body>
+    <!-- Ambient ASCII background (ascii-bg.js) -->
+    <div class="page-bg" id="page-bg" aria-hidden="true"></div>
+
     <!-- Pixel loader -->
     <div class="loader" id="loader" aria-hidden="true">
         <div class="loader-field" id="loader-field"></div>
@@ -112,7 +116,7 @@
         <!-- ═════════════ HERO ═════════════ -->
         <section class="hero container">
             <div class="hero-meta">
-                <p class="work-only" data-i18n="hero-kicker">Mechanical Engineering — Nuclear Engineering minor</p>
+                <p class="work-only" data-i18n="hero-kicker">Mechanical Engineering</p>
                 <p class="life-only" data-i18n="hobby-hero-kicker">Photography — Skiing — Travel — Running</p>
                 <p class="mono">
                     <span data-i18n="hero-place">College Park, MD / From Skopje, MK</span>
@@ -484,6 +488,7 @@
     <script src="gallery-config.js"></script>
     <script src="translations.js"></script>
     <script src="script.js"></script>
+    <script type="module" src="ascii-bg.js"></script>
 </body>
 
 </html>
