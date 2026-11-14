@@ -415,7 +415,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const weatherEl = document.getElementById('live-weather');
     // Start with the browser's own time zone; refined once the IP lookup resolves.
     let TZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    let useF = false;
 
     function updateClock() {
         const now = new Date();
@@ -433,11 +432,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadWeather(lat, lon) {
-        const unit = useF ? '&temperature_unit=fahrenheit' : '';
-        return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true${unit}`)
+        return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
             .then(r => r.json())
             .then(d => {
-                if (d && d.current_weather) weatherEl.textContent = `${Math.round(d.current_weather.temperature)}°${useF ? 'F' : 'C'}`;
+                if (d && d.current_weather) {
+                    const c = d.current_weather.temperature;
+                    weatherEl.textContent = `${Math.round(c)}°C / ${Math.round(c * 9 / 5 + 32)}°F`;
+                }
             });
     }
 
@@ -447,14 +448,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(loc => {
             if (!loc || loc.error || loc.latitude == null) throw new Error('no location');
             if (loc.timezone) { TZ = loc.timezone; updateClock(); }
-            useF = loc.country_code === 'US';
             const region = loc.country_code === 'US' ? loc.region_code : loc.country_code;
             placeEl.textContent = [loc.city, region].filter(Boolean).join(', ') || placeFromTZ();
             return loadWeather(loc.latitude, loc.longitude);
         })
         .catch(() => {
             placeEl.textContent = placeFromTZ();
-            weatherEl.textContent = '--°C';
+            weatherEl.textContent = '--°C / --°F';
         });
 
     /* ---------- 12. Spotify via Lanyard ---------- */
