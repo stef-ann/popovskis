@@ -10,7 +10,7 @@
  * 8.  Tabs
  * 9.  Detail panel
  * 10. Gallery + lightbox
- * 11. Live time & weather (College Park, MD)
+ * 11. Live place, time & weather (visitor location)
  * 12. Spotify (Lanyard) now playing
  */
 
@@ -409,10 +409,13 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (body.classList.contains('menu-open')) setMenu(false);
     });
 
-    /* ---------- 11. Live time & weather (College Park, MD) ---------- */
+    /* ---------- 11. Live place, time & weather (visitor's location) ---------- */
+    const placeEl = document.getElementById('live-place');
     const timeEl = document.getElementById('live-time');
     const weatherEl = document.getElementById('live-weather');
-    const TZ = 'America/New_York';
+    // Start with the browser's own time zone; refined once the IP lookup resolves.
+    let TZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    let useF = false;
 
     function updateClock() {
         const now = new Date();
@@ -423,12 +426,36 @@ document.addEventListener('DOMContentLoaded', () => {
     updateClock();
     setInterval(updateClock, 15000);
 
-    fetch('https://api.open-meteo.com/v1/forecast?latitude=38.9807&longitude=-76.9369&current_weather=true')
-        .then(r => r.json())
-        .then(d => {
-            if (d && d.current_weather) weatherEl.textContent = `${Math.round(d.current_weather.temperature)}°C`;
+    // Fallback place name derived from the time zone, e.g. "Europe/Skopje" -> "Skopje"
+    function placeFromTZ() {
+        const city = (TZ || '').split('/').pop() || '';
+        return city.replace(/_/g, ' ') || 'Earth';
+    }
+
+    function loadWeather(lat, lon) {
+        const unit = useF ? '&temperature_unit=fahrenheit' : '';
+        return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true${unit}`)
+            .then(r => r.json())
+            .then(d => {
+                if (d && d.current_weather) weatherEl.textContent = `${Math.round(d.current_weather.temperature)}°${useF ? 'F' : 'C'}`;
+            });
+    }
+
+    // Approximate location from the visitor's IP (no permission prompt, no API key)
+    fetch('https://ipapi.co/json/')
+        .then(r => { if (!r.ok) throw new Error('lookup failed'); return r.json(); })
+        .then(loc => {
+            if (!loc || loc.error || loc.latitude == null) throw new Error('no location');
+            if (loc.timezone) { TZ = loc.timezone; updateClock(); }
+            useF = loc.country_code === 'US';
+            const region = loc.country_code === 'US' ? loc.region_code : loc.country_code;
+            placeEl.textContent = [loc.city, region].filter(Boolean).join(', ') || placeFromTZ();
+            return loadWeather(loc.latitude, loc.longitude);
         })
-        .catch(() => { weatherEl.textContent = '--°C'; });
+        .catch(() => {
+            placeEl.textContent = placeFromTZ();
+            weatherEl.textContent = '--°C';
+        });
 
     /* ---------- 12. Spotify via Lanyard ---------- */
     // Shows live Spotify status if this Discord account has joined the Lanyard
