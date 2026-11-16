@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ---------- 1. Pixel sprites ---------- */
     const SVG_NS = 'http://www.w3.org/2000/svg';
+    const TONES = { '#': 1, '+': 0.66, ':': 0.33 };
 
     function buildSprite(el) {
         if (el.querySelector('svg')) return;
@@ -37,12 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
         svg.setAttribute('aria-hidden', 'true');
         rows.forEach((row, y) => {
             [...row].forEach((c, x) => {
-                if (c !== '#') return;
+                const tone = TONES[c];
+                if (!tone) return;
                 const r = document.createElementNS(SVG_NS, 'rect');
+                if (tone < 1) r.setAttribute('fill-opacity', tone);
                 r.setAttribute('x', x);
                 r.setAttribute('y', y);
-                r.setAttribute('width', 1.02); // tiny overlap hides hairline seams
-                r.setAttribute('height', 1.02);
+                // tiny overlap hides hairline seams (not on translucent tones, where it would show as darker lines)
+                const size = tone < 1 ? 1 : 1.02;
+                r.setAttribute('width', size);
+                r.setAttribute('height', size);
                 r.style.transitionDelay = `${Math.round(Math.random() * 700)}ms`;
                 svg.appendChild(r);
             });
