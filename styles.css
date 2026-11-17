@@ -27,7 +27,7 @@
 }
 
 [data-theme="light"] {
-    --bg: #f2f0eb;
+    --bg: #F5F5DC;
     --ink: #111113;
     --ink-rgb: 17, 17, 19;
     --ink-light: rgba(var(--ink-rgb), 0.6);
